@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estructura de Datos</title>
+<style>
+  :root {
+    --bg: #1e1f24;
+    --card: #2c2f36;
+    --text: #e0e0e0;
+    --accent: #00aaff;
+    --accent-hover: #33bbff;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ====== BARRA SUPERIOR ====== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--card);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    z-index: 10;
+  }
+
+  header h1 {
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .unidades {
+    display: flex;
+    gap: 10px;
+  }
+
+  .unidades button {
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .unidades button:hover, .unidades button.active {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ====== MENÚ LATERAL ====== */
+  aside {
+    width: 260px;
+    background-color: #24262c;
+    padding: 70px 15px 15px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+
+  aside h2 {
+    font-size: 1.1em;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu li {
+    margin-bottom: 6px;
+  }
+
+  .menu a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  .menu a:hover, .menu a.active {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ====== CONTENIDO PRINCIPAL ====== */
+  main {
+    flex: 1;
+    padding: 80px 40px 40px 280px;
+    overflow-y: auto;
+  }
+
+  .card {
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  h2 {
+    color: var(--accent);
+  }
+
+  .subtitulo {
+    background-color: rgba(0,170,255,0.15);
+    padding: 8px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📘 Estructura de Datos — ESPOCH</h1>
+  <div class="unidades">
+    <button class="active" onclick="mostrarUnidad('u1', this)">Unidad 1</button>
+    <button onclick="mostrarUnidad('u2', this)">Unidad 2</button>
+    <button onclick="mostrarUnidad('u3', this)">Unidad 3</button>
+    <button onclick="mostrarUnidad('u4', this)">Unidad 4</button>
+  </div>
+</header>
+
+<aside>
+  <h2>Contenido</h2>
+  <ul id="menu" class="menu"></ul>
+</aside>
+
+<main id="contenido">
+  <div class="card">
+    <h2>Unidad 1 — Fundamentos e Introducción</h2>
+    <p>Selecciona un tema del menú lateral para comenzar.</p>
+  </div>
+</main>
+
+<script>
+const unidades = {
+  u1: {
+    titulo: "Fundamentos e Introducción a las Estructuras de Datos",
+    temas: {
+      "Introducción": ["Historia", "Características", "Ventajas y Desventajas"],
+      "Tipos de Datos": ["Primitivos", "Compuestos", "Abstractos"],
+      "Fundamentos de Algoritmia": ["Concepto", "Representación", "Ciencias de la Computación"]
+    }
+  },
+  u2: {
+    titulo: "Estructuras de Datos Lineales",
+    temas: {
+      "Pila (Stack)": ["¿Qué es una pila?", "Representación gráfica", "Operaciones", "Aplicaciones"],
+      "Cola (Queue)": ["¿Qué es una cola?", "Tipos de cola", "Operaciones", "Aplicaciones"],
+      "Lista (List)": ["¿Qué es un nodo?", "Tipos de lista", "Operaciones", "Aplicaciones"]
+    }
+  },
+  u3: {
+    titulo: "Estructuras de Datos No Lineales",
+    temas: {
+      "Visualización de Algoritmos": ["Técnicas y herramientas"],
+      "Árboles": ["Definición", "Representación", "Recorridos", "Métodos"],
+      "Grafos": ["Definición", "Tipos", "Propiedades"]
+    }
+  },
+  u4: {
+    titulo: "Búsqueda y Ordenamiento",
+    temas: {
+      "Análisis de Algoritmos": ["Complejidad (Big O)", "Algoritmos clásicos"],
+      "Ordenamiento": ["Burbuja", "QuickSort", "MergeSort"],
+      "Búsqueda": ["Secuencial", "Binaria", "Hash"]
+    }
+  }
+};
+
+function mostrarUnidad(id, btn) {
+  document.querySelectorAll('.unidades button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const menu = document.getElementById('menu');
+  const cont = document.getElementById('contenido');
+  const unidad = unidades[id];
+
+  menu.innerHTML = '';
+  cont.innerHTML = `
+    <div class="card">
+      <h2>${unidad.titulo}</h2>
+      <p>Resultado: ${id === 'u1' ? 'Identificar fundamentos básicos.' :
+                    id === 'u2' ? 'Analizar estructuras lineales.' :
+                    id === 'u3' ? 'Aplicar estructuras no lineales.' :
+                    'Implementar algoritmos de búsqueda y ordenamiento.'}</p>
+    </div>
+  `;
+
+  for (const tema in unidad.temas) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.textContent = tema;
+    a.href = "#";
+    a.onclick = () => mostrarTema(id, tema);
+    li.appendChild(a);
+    menu.appendChild(li);
+  }
+}
+
+function mostrarTema(unidadId, tema) {
+  const cont = document.getElementById('contenido');
+  const subtemas = unidades[unidadId].temas[tema];
+  cont.innerHTML = `
+    <div class="card">
+      <div class="subtitulo">Unidad ${unidadId.slice(1)}</div>
+      <h2>${tema}</h2>
+      <ul>${subtemas.map(s => `<li>${s}</li>`).join('')}</ul>
+    </div>
+  `;
+}
+
+mostrarUnidad('u1', document.querySelector('.unidades button'));
+</script>
+
+</body>
+</html>
+
