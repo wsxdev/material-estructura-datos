@@ -200,6 +200,23 @@ nav a.active::after {
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estados de iconos */
+.theme-toggle svg.icon-hidden,
+.menu-toggle svg.icon-hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+.theme-toggle svg.icon-visible,
+.menu-toggle svg.icon-visible {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
 }
 
 .menu-toggle {
@@ -246,7 +263,7 @@ nav a.active::after {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-surface);
   border: 2px solid var(--sb-500);
   border-top: none;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
@@ -254,6 +271,7 @@ nav a.active::after {
   overflow-y: auto;
   z-index: 1000;
   box-shadow: var(--shadow-lg);
+  display: none;
 }
 
 .search-result-item {

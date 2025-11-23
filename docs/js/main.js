@@ -25,6 +25,7 @@ const CONFIG = {
 
 class ThemeManager {
   constructor() {
+    this.isDark = false;
     this.init();
   }
 
@@ -38,12 +39,14 @@ class ThemeManager {
   }
 
   setTheme(theme) {
-    const isDark = theme === 'dark';
+    this.isDark = theme === 'dark';
     
-    if (isDark) {
+    if (this.isDark) {
       DOM.html.classList.add('dark-mode');
+      DOM.body.classList.add('dark-mode');
     } else {
       DOM.html.classList.remove('dark-mode');
+      DOM.body.classList.remove('dark-mode');
     }
     
     localStorage.setItem(CONFIG.themeKey, theme);
@@ -57,17 +60,43 @@ class ThemeManager {
   }
 
   updateThemeButton() {
-    if (!DOM.themeToggle) return;
+    // Actualizar botones de tema con iconos SVG
+    const allThemeButtons = document.querySelectorAll('[data-action="toggle-theme"]');
+    allThemeButtons.forEach(btn => {
+      const svgs = btn.querySelectorAll('svg');
+      if (svgs.length >= 2) {
+        const sunIcon = svgs[0];
+        const moonIcon = svgs[1];
+        
+        if (this.isDark) {
+          sunIcon.classList.add('icon-hidden');
+          sunIcon.classList.remove('icon-visible');
+          moonIcon.classList.add('icon-visible');
+          moonIcon.classList.remove('icon-hidden');
+        } else {
+          sunIcon.classList.add('icon-visible');
+          sunIcon.classList.remove('icon-hidden');
+          moonIcon.classList.add('icon-hidden');
+          moonIcon.classList.remove('icon-visible');
+        }
+      }
+    });
     
-    const isDark = DOM.html.classList.contains('dark-mode');
-    DOM.themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    DOM.themeToggle.setAttribute('title', isDark ? 'Modo claro' : 'Modo oscuro');
+    // Actualizar atributos del botón principal
+    if (DOM.themeToggle) {
+      DOM.themeToggle.setAttribute('aria-label', this.isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      DOM.themeToggle.setAttribute('title', this.isDark ? 'Modo claro' : 'Modo oscuro');
+    }
   }
 
   attachListeners() {
-    if (DOM.themeToggle) {
-      DOM.themeToggle.addEventListener('click', () => this.toggle());
-    }
+    // Escuchar clics en todos los botones de tema
+    document.querySelectorAll('[data-action="toggle-theme"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toggle();
+      });
+    });
 
     // Detectar cambio de preferencia del sistema
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -177,16 +206,25 @@ class NavigationHighlight {
 
 class SearchManager {
   constructor() {
-    this.init();
     this.resultsContainer = document.getElementById('search-results');
+    this.searchInput = DOM.searchInput;
+    this.searchContainer = document.querySelector('.search-container');
+    this.init();
   }
 
   init() {
-    if (DOM.searchInput) {
-      DOM.searchInput.addEventListener('input', Utils.debounce((e) => this.search(e.target.value), 300));
-      DOM.searchInput.addEventListener('keydown', (e) => {
+    if (this.searchInput) {
+      this.searchInput.addEventListener('input', Utils.debounce((e) => this.search(e.target.value), 300));
+      this.searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          DOM.searchInput.value = '';
+          this.searchInput.value = '';
+          this.clearResults();
+        }
+      });
+      
+      // Cerrar resultados al hacer click fuera
+      document.addEventListener('click', (e) => {
+        if (this.searchContainer && !this.searchContainer.contains(e.target)) {
           this.clearResults();
         }
       });
@@ -277,13 +315,15 @@ class SearchManager {
     this.resultsContainer.style.display = 'block';
 
     // Agregar listeners a los resultados
-    this.resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
+    this.resultsContainer.querySelectorAll('.search-result-item').forEach((item, index) => {
       item.addEventListener('click', () => {
-        const result = results[Array.from(this.resultsContainer.querySelectorAll('.search-result-item')).indexOf(item)];
+        const result = results[index];
         if (result && result.element) {
           result.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
           result.element.classList.add('highlight');
           setTimeout(() => result.element.classList.remove('highlight'), 2000);
+          this.clearResults();
+          this.searchInput.value = '';
         }
       });
     });
