@@ -178,11 +178,12 @@ class NavigationHighlight {
 class SearchManager {
   constructor() {
     this.init();
+    this.resultsContainer = document.getElementById('search-results');
   }
 
   init() {
     if (DOM.searchInput) {
-      DOM.searchInput.addEventListener('input', (e) => this.search(e.target.value));
+      DOM.searchInput.addEventListener('input', Utils.debounce((e) => this.search(e.target.value), 300));
       DOM.searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           DOM.searchInput.value = '';
@@ -250,12 +251,69 @@ class SearchManager {
   }
 
   displayResults(results, query) {
-    // Si implementas una UI de búsqueda, mostrar aquí
-    console.log(`Resultados de búsqueda para "${query}":`, results);
+    if (!this.resultsContainer) return;
+    
+    if (results.length === 0) {
+      this.resultsContainer.innerHTML = '<div class="search-result-item">No se encontraron resultados para "' + this.escapeHtml(query) + '"</div>';
+      this.resultsContainer.style.display = 'block';
+      return;
+    }
+
+    const resultHTML = results.map(result => {
+      const icon = result.type === 'heading' ? '📌' : '📄';
+      const highlightedText = this.highlightQuery(result.text, query);
+      return `
+        <div class="search-result-item" data-relevance="${result.relevance}">
+          <div class="result-icon">${icon}</div>
+          <div class="result-content">
+            <div class="result-text">${highlightedText}</div>
+            <div class="result-type">${result.type === 'heading' ? 'Título' : 'Contenido'}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    this.resultsContainer.innerHTML = resultHTML;
+    this.resultsContainer.style.display = 'block';
+
+    // Agregar listeners a los resultados
+    this.resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const result = results[Array.from(this.resultsContainer.querySelectorAll('.search-result-item')).indexOf(item)];
+        if (result && result.element) {
+          result.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          result.element.classList.add('highlight');
+          setTimeout(() => result.element.classList.remove('highlight'), 2000);
+        }
+      });
+    });
+  }
+
+  highlightQuery(text, query) {
+    const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  escapeHtml(text) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+  }
+
+  escapeRegex(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   clearResults() {
-    // Limpiar resultados si existen
+    if (this.resultsContainer) {
+      this.resultsContainer.style.display = 'none';
+      this.resultsContainer.innerHTML = '';
+    }
   }
 }
 
