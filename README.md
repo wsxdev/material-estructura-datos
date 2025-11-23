@@ -175,7 +175,7 @@ Este material educativo fue desarrollado por:
   - Email: williamsxdev@gmail.com
   - Especialización: TI
 
-- **Britany Redrován** - [@Britany](https://github.com/Britany)
+- **Britany Redrován** - [@Britanr](https://github.com/Britany)
   - Email: redrovanbritany1751623776@gmail.com
   - Especialización: TI
 
@@ -193,7 +193,7 @@ Este proyecto está bajo licencia MIT. Libre para uso educativo y comercial.
 
 ```
 MIT License - Copyright (c) 2025
-Liset Ibarra, William Chisag, Britany Redrován
+Licet Ibarra, William Chisag, Britany Redrován
 ```
 
 ## Changelog
