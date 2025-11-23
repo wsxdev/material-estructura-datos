@@ -167,7 +167,7 @@ Este proyecto está listo para GitHub Pages:
 
 Este material educativo fue desarrollado por:
 
-- **Liset Ibarra** - [@licetdev](https://github.com/licetdev)
+- **Licet Ibarra** - [@licetdev](https://github.com/licetdev)
   - Email: marialiset13@gmail.com
   - Especialización: TI
 
