@@ -1,160 +1,402 @@
+/* ============================================
+   MAIN.JS - Funcionalidades Principales
+   ============================================ */
 
-//     TUS UNIDADES (NO MODIFICADO)
-const unidades = {
-  u1: {
-    titulo: "Fundamentos e Introducción a las Estructuras de Datos",
-    temas: {
-      "Introducción": ["Historia", "Características", "Ventajas y Desventajas"],
-      "Tipos de Datos": ["Primitivos", "Compuestos", "Abstractos"],
-      "Fundamentos de Algoritmia": ["Concepto", "Representación", "Ciencias de la Computación"]
-    }
-  },
-  u2: {
-    titulo: "Estructuras de Datos Lineales",
-    temas: {
-      "Pila (Stack)": ["¿Qué es una pila?", "Representación gráfica", "Operaciones", "Aplicaciones"],
-      "Cola (Queue)": ["¿Qué es una cola?", "Tipos de cola", "Operaciones", "Aplicaciones"],
-      "Lista (List)": ["¿Qué es un nodo?", "Tipos de lista", "Operaciones", "Aplicaciones"]
-    }
-  },
-  u3: {
-    titulo: "Estructuras de Datos No Lineales",
-    temas: {
-      "Visualización de Algoritmos": ["Técnicas y herramientas"],
-      "Árboles": ["Definición", "Representación", "Recorridos", "Métodos"],
-      "Grafos": ["Definición", "Tipos", "Propiedades"]
-    }
-  },
-  u4: {
-    titulo: "Búsqueda y Ordenamiento",
-    temas: {
-      "Análisis de Algoritmos": ["Complejidad (Big O)", "Algoritmos clásicos"],
-      "Ordenamiento": ["Burbuja", "QuickSort", "MergeSort"],
-      "Búsqueda": ["Secuencial", "Binaria", "Hash"]
-    }
+// ============ UTILIDADES ============
+
+const DOM = {
+  html: document.documentElement,
+  body: document.body,
+  header: document.querySelector('header'),
+  nav: document.querySelector('nav'),
+  themeToggle: document.querySelector('.theme-toggle'),
+  menuToggle: document.querySelector('.menu-toggle'),
+  navList: document.querySelector('nav ul'),
+  searchInput: document.querySelector('.search-input'),
+};
+
+const CONFIG = {
+  themeKey: 'ed-site-theme',
+  menuKey: 'ed-site-menu-open',
+  prefersDark: window.matchMedia('(prefers-color-scheme: dark)').matches,
+};
+
+// ============ MODO OSCURO/CLARO ============
+
+class ThemeManager {
+  constructor() {
+    this.init();
   }
-};
 
+  init() {
+    const savedTheme = localStorage.getItem(CONFIG.themeKey);
+    const systemPreference = CONFIG.prefersDark ? 'dark' : 'light';
+    const theme = savedTheme || systemPreference;
+    
+    this.setTheme(theme);
+    this.attachListeners();
+  }
 
+  setTheme(theme) {
+    const isDark = theme === 'dark';
+    
+    if (isDark) {
+      DOM.html.classList.add('dark-mode');
+    } else {
+      DOM.html.classList.remove('dark-mode');
+    }
+    
+    localStorage.setItem(CONFIG.themeKey, theme);
+    this.updateThemeButton();
+  }
 
-//  🔹 NUEVO: CONTENIDO REAL PARA CADA SUBTEMA (NO CAMBIA TEMAS)
-const informacion = {
+  toggle() {
+    const currentTheme = DOM.html.classList.contains('dark-mode') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    this.setTheme(newTheme);
+  }
 
-  // ========= UNIDAD 1 =========
-  "Historia": "Las estructuras de datos tienen una larga y legendaria historia en la informática, con raíces que se remontan a los primeros días de la informática. A principios de los años cincuenta, los investigadores comenzaron a explorar formas de almacenar y organizar datos en computadoras, lo que llevó al desarrollo de algunas de las primeras estructuras de datos. ",
-  "Características": "Organización, eficiencia, reutilización, control de memoria, abstracción de datos.",
-  "Ventajas y Desventajas": "Ventajas: optimizan memoria y velocidad. Desventajas: algunos requieren más implementación.",
+  updateThemeButton() {
+    if (!DOM.themeToggle) return;
+    
+    const isDark = DOM.html.classList.contains('dark-mode');
+    DOM.themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    DOM.themeToggle.setAttribute('title', isDark ? 'Modo claro' : 'Modo oscuro');
+  }
 
-  "Primitivos": "Incluyen enteros, flotantes, booleanos y caracteres. Son manejados directamente por el lenguaje.",
-  "Compuestos": "Unen varios datos: Arrays, Registros, Strings.",
-  "Abstractos": "Modelos lógicos: Lista, Pila, Cola, Árbol, Grafo.",
+  attachListeners() {
+    if (DOM.themeToggle) {
+      DOM.themeToggle.addEventListener('click', () => this.toggle());
+    }
 
-  "Concepto": "Un algoritmo es un conjunto ordenado de pasos para resolver un problema.",
-  "Representación": "Se puede representar mediante pseudocódigo, diagramas de flujo o código.",
-  "Ciencias de la Computación": "La algoritmia es base en optimización, IA, sistemas operativos y bases de datos.",
-
-  // ========= UNIDAD 2 =========
-  "¿Qué es una pila?": "Es una estructura LIFO donde el último en entrar es el primero en salir.",
-  "Representación gráfica": "Se representa como una columna donde los datos se apilan encima de los otros.",
-  "Operaciones": "push(), pop(), peek(), isEmpty().",
-  "Aplicaciones": "Deshacer acciones, llamadas recursivas, manejo de expresiones.",
-
-  "¿Qué es una cola?": "Estructura FIFO. El primero en entrar es el primero en salir.",
-  "Tipos de cola": "Simple, circular, doble, prioridad.",
-  "Operaciones Cola": "enqueue(), dequeue(), front(), isEmpty().",
-
-  "¿Qué es un nodo?": "Elemento principal de listas enlazadas, contiene dato y referencia.",
-  "Tipos de lista": "Simple, doble, circular.",
-  "Operaciones Lista": "Insertar, eliminar, buscar.",
-
-  // ========= UNIDAD 3 =========
-  "Técnicas y herramientas": "Incluye animaciones, diagramas, software como VisuAlgo.",
-  "Definición Árbol": "Estructura jerárquica compuesta por nodos conectados.",
-  "Representación Árbol": "Nodos conectados con enlaces padre-hijo.",
-  "Recorridos": "Preorden, Inorden, Postorden.",
-  "Métodos": "Insertar, eliminar, buscar.",
-
-  "Definición Grafo": "Conjunto de nodos conectados mediante aristas.",
-  "Tipos Grafo": "Dirigido, no dirigido, ponderado.",
-  "Propiedades": "Grado, conexiones, ciclos, componentes.",
-
-  // ========= UNIDAD 4 =========
-  "Complejidad (Big O)": "Permite analizar eficiencia de tiempo y espacio.",
-  "Algoritmos clásicos": "Divide y vencerás, programación dinámica, greedy.",
-
-  "Burbuja": "Compara elementos contiguos y los intercambia si es necesario.",
-  "QuickSort": "Divide la lista en particiones mediante un pivote.",
-  "MergeSort": "Divide la lista y la fusiona ordenada.",
-
-  "Secuencial": "Revisa cada elemento hasta encontrar objetivo.",
-  "Binaria": "Divide la lista en mitades; requiere lista ordenada.",
-  "Hash": "Usa funciones hash para acceso en O(1)."
-};
-
-
-
-//           MOSTRAR MENÚ POR UNIDAD (NO MODIFICADO)
-
-function mostrarUnidad(id, btn) {
-  document.querySelectorAll('.unidades button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const menu = document.getElementById('menu');
-  const cont = document.getElementById('contenido');
-  const unidad = unidades[id];
-
-  menu.innerHTML = '';
-  cont.innerHTML = `
-    <div class="card">
-      <h2>${unidad.titulo}</h2>
-      <p>Selecciona un tema o subtema.</p>
-    </div>
-  `;
-
-  for (const tema in unidad.temas) {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.textContent = tema;
-    a.href = "#";
-    a.onclick = () => mostrarTema(id, tema);
-    li.appendChild(a);
-    menu.appendChild(li);
+    // Detectar cambio de preferencia del sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem(CONFIG.themeKey)) {
+        this.setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
   }
 }
 
-//     MOSTRAR LOS SUBTEMAS DEL TEMA SELECCIONADO (NO CAMBIADO)
+// ============ MENÚ RESPONSIVE ============
 
-function mostrarTema(unidadId, tema) {
-  const cont = document.getElementById('contenido');
-  const subtemas = unidades[unidadId].temas[tema];
+class MenuManager {
+  constructor() {
+    this.init();
+  }
 
-  cont.innerHTML = `
-    <div class="card">
-      <h2>${tema}</h2>
-      <p><b>Subtemas disponibles:</b></p>
-      <ul>
-        ${subtemas.map(s => `<li><a href="#" onclick="mostrarSubtema('${s}')">${s}</a></li>`).join('')}
-      </ul>
-    </div>
-  `;
+  init() {
+    this.attachListeners();
+  }
+
+  toggle() {
+    if (DOM.navList) {
+      DOM.navList.classList.toggle('active');
+    }
+  }
+
+  close() {
+    if (DOM.navList) {
+      DOM.navList.classList.remove('active');
+    }
+  }
+
+  attachListeners() {
+    if (DOM.menuToggle) {
+      DOM.menuToggle.addEventListener('click', () => this.toggle());
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    if (DOM.nav) {
+      DOM.nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          this.close();
+        }
+      });
+    }
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (DOM.navList && DOM.navList.classList.contains('active')) {
+        if (!DOM.nav.contains(e.target) && !DOM.menuToggle.contains(e.target)) {
+          this.close();
+        }
+      }
+    });
+
+    // Cerrar menú al cambiar el tamaño de la pantalla
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        this.close();
+      }
+    });
+  }
 }
 
+// ============ NAVEGACIÓN ACTIVA ============
 
+class NavigationHighlight {
+  constructor() {
+    this.init();
+  }
 
-//           NUEVO: MOSTRAR INFORMACIÓN DEL SUBTEMA
+  init() {
+    this.updateActiveLink();
+    window.addEventListener('hashchange', () => this.updateActiveLink());
+  }
 
-function mostrarSubtema(nombre) {
-  const cont = document.getElementById('contenido');
+  updateActiveLink() {
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
 
-  const info = informacion[nombre] || "Contenido no disponible.";
-
-  cont.innerHTML = `
-    <div class="card">
-      <h2>${nombre}</h2>
-      <p>${info}</p>
-    </div>
-  `;
+    navLinks.forEach((link) => {
+      link.classList.remove('active');
+      
+      const href = link.getAttribute('href');
+      
+      // Verificar hash
+      if (currentHash && href === currentHash) {
+        link.classList.add('active');
+      }
+      // Verificar ruta
+      else if (href && currentPath.includes(href.replace('/', ''))) {
+        link.classList.add('active');
+      }
+      // Página de inicio
+      else if (href === '/' || href === 'index.html') {
+        if (currentPath === '/' || currentPath.endsWith('index.html') || currentPath.endsWith('readme/')) {
+          link.classList.add('active');
+        }
+      }
+    });
+  }
 }
 
+// ============ BÚSQUEDA ============
 
-// Mostrar unidad 1 al iniciar
-mostrarUnidad('u1', document.querySelector('.unidades button'));
+class SearchManager {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    if (DOM.searchInput) {
+      DOM.searchInput.addEventListener('input', (e) => this.search(e.target.value));
+      DOM.searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          DOM.searchInput.value = '';
+          this.clearResults();
+        }
+      });
+    }
+  }
+
+  search(query) {
+    if (!query.trim()) {
+      this.clearResults();
+      return;
+    }
+
+    const results = this.findResults(query.toLowerCase());
+    this.displayResults(results, query);
+  }
+
+  findResults(query) {
+    const results = [];
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const paragraphs = document.querySelectorAll('p, li');
+
+    // Buscar en títulos
+    headings.forEach((heading) => {
+      const text = heading.textContent.toLowerCase();
+      if (text.includes(query)) {
+        results.push({
+          type: 'heading',
+          text: heading.textContent,
+          element: heading,
+          relevance: 10,
+        });
+      }
+    });
+
+    // Buscar en contenido
+    paragraphs.forEach((para) => {
+      const text = para.textContent.toLowerCase();
+      if (text.includes(query)) {
+        const snippet = this.extractSnippet(text, query, 100);
+        results.push({
+          type: 'content',
+          text: snippet,
+          element: para,
+          relevance: 5,
+        });
+      }
+    });
+
+    return results.sort((a, b) => b.relevance - a.relevance).slice(0, 10);
+  }
+
+  extractSnippet(text, query, length) {
+    const index = text.indexOf(query);
+    const start = Math.max(0, index - length / 2);
+    const end = Math.min(text.length, index + length / 2);
+    let snippet = text.substring(start, end);
+
+    if (start > 0) snippet = '...' + snippet;
+    if (end < text.length) snippet = snippet + '...';
+
+    return snippet;
+  }
+
+  displayResults(results, query) {
+    // Si implementas una UI de búsqueda, mostrar aquí
+    console.log(`Resultados de búsqueda para "${query}":`, results);
+  }
+
+  clearResults() {
+    // Limpiar resultados si existen
+  }
+}
+
+// ============ SMOOTH SCROLL ============
+
+class SmoothScroll {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href === '#') return;
+
+        e.preventDefault();
+        const target = document.querySelector(href);
+        
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+}
+
+// ============ ANIMACIONES AL SCROLL ============
+
+class ScrollAnimations {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .unit-card, .topic').forEach((el) => {
+      observer.observe(el);
+    });
+  }
+}
+
+// ============ ACCESIBILIDAD ============
+
+class A11y {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.ensureAltText();
+    this.improveKeyboardNavigation();
+  }
+
+  ensureAltText() {
+    document.querySelectorAll('img:not([alt])').forEach((img) => {
+      img.setAttribute('alt', 'Imagen del contenido');
+    });
+  }
+
+  improveKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+      // Alt + D para ir al contenido principal
+      if (e.altKey && e.key === 'd') {
+        const main = document.querySelector('main');
+        if (main) {
+          main.setAttribute('tabindex', '-1');
+          main.focus();
+        }
+      }
+    });
+  }
+}
+
+// ============ UTILIDADES ============
+
+class Utils {
+  static throttle(func, delay) {
+    let lastCall = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastCall >= delay) {
+        lastCall = now;
+        return func(...args);
+      }
+    };
+  }
+
+  static debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  }
+
+  static addClass(element, className) {
+    if (element) element.classList.add(className);
+  }
+
+  static removeClass(element, className) {
+    if (element) element.classList.remove(className);
+  }
+
+  static toggleClass(element, className) {
+    if (element) element.classList.toggle(className);
+  }
+
+  static hasClass(element, className) {
+    return element ? element.classList.contains(className) : false;
+  }
+}
+
+// ============ INICIALIZACIÓN ============
+
+document.addEventListener('DOMContentLoaded', () => {
+  const themeManager = new ThemeManager();
+  const menuManager = new MenuManager();
+  const navigationHighlight = new NavigationHighlight();
+  const searchManager = new SearchManager();
+  const smoothScroll = new SmoothScroll();
+  const scrollAnimations = new ScrollAnimations();
+  const a11y = new A11y();
+
+  console.log('✓ Sitio web de Estructura de Datos cargado correctamente');
+});
+
+// Manejar errores globales
+window.addEventListener('error', (event) => {
+  console.error('Error:', event.error);
+});
+
+// Limpiar recursos al descargar
+window.addEventListener('beforeunload', () => {
+  // Guardar estado si es necesario
+});

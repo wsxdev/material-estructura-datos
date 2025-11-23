@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 4: Búsqueda y Ordenamiento - Análisis de complejidad y algoritmos">
+  <title>Unidad 4 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 4</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 4: Búsqueda y Ordenamiento</h1>
+      <p>Análisis de complejidad, algoritmos de búsqueda y ordenamiento, Big O</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#analisis">1. Análisis de Algoritmos</a></li>
+          <li><a href="#ordenamientos">2. Algoritmos de Ordenamiento</a></li>
+          <li><a href="#busquedas">3. Algoritmos de Búsqueda</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Análisis de Algoritmos -->
+      <section class="topic" id="analisis">
+        <h2>1. Análisis de Algoritmos</h2>
+
+        <h3>Complejidad Temporal y Espacial</h3>
+        <div class="topic-content">
+          <p>
+            La complejidad de un algoritmo mide cuántos recursos (tiempo y memoria) consume 
+            en relación al tamaño de la entrada.
+          </p>
+          <h4>Tipos:</h4>
+          <ul>
+            <li><strong>Temporal:</strong> Número de operaciones realizadas</li>
+            <li><strong>Espacial:</strong> Memoria auxiliar consumida</li>
+          </ul>
+        </div>
+
+        <h3>Big O Cheatsheet</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Notación</th>
+                <th>Nombre</th>
+                <th>Ejemplo</th>
+                <th>n=1000</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>O(1)</strong></td>
+                <td>Constante</td>
+                <td>Acceso a array</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td><strong>O(log n)</strong></td>
+                <td>Logarítmica</td>
+                <td>Búsqueda binaria</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td><strong>O(n)</strong></td>
+                <td>Lineal</td>
+                <td>Búsqueda lineal</td>
+                <td>1,000</td>
+              </tr>
+              <tr>
+                <td><strong>O(n log n)</strong></td>
+                <td>Lineal-log</td>
+                <td>Merge Sort</td>
+                <td>10,000</td>
+              </tr>
+              <tr>
+                <td><strong>O(n²)</strong></td>
+                <td>Cuadrática</td>
+                <td>Bubble Sort</td>
+                <td>1,000,000</td>
+              </tr>
+              <tr>
+                <td><strong>O(2^n)</strong></td>
+                <td>Exponencial</td>
+                <td>Fuerza bruta</td>
+                <td>10³⁰</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Estudio de Algoritmos Clásicos</h3>
+        <div class="card">
+          <p>
+            Los algoritmos se analizan considerando:
+          </p>
+          <ul>
+            <li><strong>Mejor caso:</strong> Entrada más favorable</li>
+            <li><strong>Caso promedio:</strong> Entrada típica</li>
+            <li><strong>Peor caso:</strong> Entrada más desfavorable</li>
+          </ul>
+        </div>
+
+        <h3>Aplicaciones en Programación Competitiva</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Optimización</h4>
+            <p>Seleccionar algoritmo con mejor complejidad</p>
+          </div>
+          <div class="card">
+            <h4>Limits</h4>
+            <p>Conocer si O(n²) es viable para n=10⁶</p>
+          </div>
+          <div class="card">
+            <h4>Debugging</h4>
+            <p>Identificar cuellos de botella</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tema 2: Ordenamientos -->
+      <section class="topic" id="ordenamientos">
+        <h2>2. Algoritmos de Ordenamiento</h2>
+
+        <h3>Ordenamiento Burbuja (Bubble Sort)</h3>
+        <div class="topic-content">
+          <p>
+            Compara elementos adyacentes e intercambia si están en orden incorrecto. 
+            Repite hasta que no hay intercambios.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad:</strong> O(n²) peor caso, O(n) mejor caso</li>
+            <li><strong>Espacio:</strong> O(1)</li>
+            <li><strong>Estable:</strong> Sí</li>
+            <li><strong>In-place:</strong> Sí</li>
+          </ul>
+          <h4>Implementación:</h4>
+          <pre><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]</code></pre>
+        </div>
+
+        <h3>Quicksort</h3>
+        <div class="topic-content">
+          <p>
+            Algoritmo divide y conquista que selecciona un pivote y particiona el array. 
+            Luego ordena recursivamente las particiones.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad:</strong> O(n log n) promedio, O(n²) peor caso</li>
+            <li><strong>Espacio:</strong> O(log n)</li>
+            <li><strong>Estable:</strong> No</li>
+            <li><strong>In-place:</strong> Sí</li>
+          </ul>
+          <h4>Implementación:</h4>
+          <pre><code>def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)</code></pre>
+        </div>
+
+        <h3>Mergesort</h3>
+        <div class="topic-content">
+          <p>
+            Divide el array en mitades, ordena cada mitad y combina los resultados. 
+            Garantiza O(n log n) siempre.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad:</strong> O(n log n) todos los casos</li>
+            <li><strong>Espacio:</strong> O(n)</li>
+            <li><strong>Estable:</strong> Sí</li>
+            <li><strong>In-place:</strong> No</li>
+          </ul>
+          <h4>Ventajas/Desventajas:</h4>
+          <ul>
+            <li>✅ Garantizado O(n log n)</li>
+            <li>✅ Estable</li>
+            <li>❌ Requiere O(n) de memoria extra</li>
+            <li>❌ Más lento que Quicksort promedio</li>
+          </ul>
+        </div>
+
+        <h3>Comparación de Ordenamientos</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Algoritmo</th>
+                <th>Mejor Caso</th>
+                <th>Promedio</th>
+                <th>Peor Caso</th>
+                <th>Espacio</th>
+                <th>Estable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bubble Sort</td>
+                <td>O(n)</td>
+                <td>O(n²)</td>
+                <td>O(n²)</td>
+                <td>O(1)</td>
+                <td>Sí</td>
+              </tr>
+              <tr>
+                <td>Quicksort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n²)</td>
+                <td>O(log n)</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Mergesort</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n)</td>
+                <td>Sí</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tema 3: Búsquedas -->
+      <section class="topic" id="busquedas">
+        <h2>3. Algoritmos de Búsqueda</h2>
+
+        <h3>Búsqueda Secuencial</h3>
+        <div class="topic-content">
+          <p>
+            Recorre el array elemento por elemento hasta encontrar el objetivo o llegar al final.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad:</strong> O(n)</li>
+            <li><strong>Ventaja:</strong> Funciona en arrays desordenados</li>
+            <li><strong>Desventaja:</strong> Lenta para arrays grandes</li>
+          </ul>
+          <pre><code>def busqueda_secuencial(arr, objetivo):
+    for i in range(len(arr)):
+        if arr[i] == objetivo:
+            return i
+    return -1  # No encontrado</code></pre>
+        </div>
+
+        <h3>Búsqueda Binaria</h3>
+        <div class="topic-content">
+          <p>
+            Divide el array ordenado por la mitad en cada iteración, descartando la mitad 
+            que no puede contener el objetivo.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad:</strong> O(log n)</li>
+            <li><strong>Requisito:</strong> Array debe estar ordenado</li>
+            <li><strong>Ventaja:</strong> Muy rápida para arrays grandes</li>
+          </ul>
+          <pre><code>def busqueda_binaria(arr, objetivo):
+    izquierda, derecha = 0, len(arr) - 1
+    while izquierda <= derecha:
+        medio = (izquierda + derecha) // 2
+        if arr[medio] == objetivo:
+            return medio
+        elif arr[medio] < objetivo:
+            izquierda = medio + 1
+        else:
+            derecha = medio - 1
+    return -1</code></pre>
+        </div>
+
+        <h3>Búsqueda Hash (Tabla Hash)</h3>
+        <div class="topic-content">
+          <p>
+            Utiliza una función hash para mapear claves a índices en una tabla. 
+            Proporciona acceso promedio O(1).
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li><strong>Complejidad Promedio:</strong> O(1)</li>
+            <li><strong>Peor Caso:</strong> O(n) (colisiones)</li>
+            <li><strong>Espacio:</strong> O(n)</li>
+            <li><strong>Ventaja:</strong> Acceso muy rápido</li>
+          </ul>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Diccionarios y mapas</li>
+            <li>Caché</li>
+            <li>Búsqueda de duplicados</li>
+          </ul>
+        </div>
+
+        <h3>Comparación de Búsquedas</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Algoritmo</th>
+                <th>Complejidad</th>
+                <th>Requisitos</th>
+                <th>Uso Ideal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Secuencial</td>
+                <td>O(n)</td>
+                <td>Ninguno</td>
+                <td>Arrays pequeños o desordenados</td>
+              </tr>
+              <tr>
+                <td>Binaria</td>
+                <td>O(log n)</td>
+                <td>Ordenado</td>
+                <td>Arrays grandes ordenados</td>
+              </tr>
+              <tr>
+                <td>Hash</td>
+                <td>O(1) prom.</td>
+                <td>Tabla hash</td>
+                <td>Búsquedas frecuentes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Resumen -->
+      <section class="topic">
+        <h2>Resumen de la Unidad 4</h2>
+        <div class="card">
+          <ul>
+            <li>Big O describe cómo escala un algoritmo con la entrada</li>
+            <li>Bubble Sort es simple pero ineficiente O(n²)</li>
+            <li>Quicksort es rápido O(n log n) promedio pero no garantizado</li>
+            <li>Mergesort es garantizado O(n log n) pero usa más memoria</li>
+            <li>Búsqueda binaria requiere array ordenado pero es muy rápida O(log n)</li>
+            <li>Hash proporciona acceso promedio O(1) en tablas</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navegación entre unidades -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <a href="./unidad3.html" class="card">
+            <h3>← Unidad Anterior</h3>
+            <p><strong>Unidad 3: Estructuras No Lineales</strong></p>
+          </a>
+          <a href="./unidad5.html" class="card">
+            <h3>Unidad Siguiente →</h3>
+            <p><strong>Unidad 5: Aplicaciones Avanzadas I</strong></p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

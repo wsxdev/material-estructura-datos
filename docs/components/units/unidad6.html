@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 6: Aplicaciones Avanzadas II - Proyectos integradores y temas especiales">
+  <title>Unidad 6 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 6</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 6: Aplicaciones Avanzadas II</h1>
+      <p>Proyectos integradores, temas especiales y conclusiones del curso</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#integradores">1. Proyectos Integradores</a></li>
+          <li><a href="#especiales">2. Temas Especiales</a></li>
+          <li><a href="#conclusion">3. Conclusión del Curso</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Proyectos Integradores -->
+      <section class="topic" id="integradores">
+        <h2>1. Proyectos Integradores</h2>
+
+        <h3>Proyecto 1: Sistema de Gestión de Procesos</h3>
+        <div class="topic-content">
+          <p>
+            Implementa un simulador de sistema operativo que gestiona procesos usando 
+            estructuras de datos aprendidas.
+          </p>
+          <h4>Especificación:</h4>
+          <ul>
+            <li>Usa <strong>Colas (FIFO)</strong> para cola de procesos listos</li>
+            <li>Usa <strong>Pila (LIFO)</strong> para stack de llamadas de función</li>
+            <li>Usa <strong>Árbol</strong> para jerarquía de procesos padre-hijo</li>
+            <li>Usa <strong>Grafo</strong> para dependencias entre procesos</li>
+          </ul>
+          <h4>Funcionalidades:</h4>
+          <ul>
+            <li>Crear nuevo proceso (Push a cola, agregar a árbol)</li>
+            <li>Procesar siguiente proceso (Pop de cola)</li>
+            <li>Cambiar prioridad (Re-ordenar cola con búsqueda)</li>
+            <li>Visualizar árbol de procesos (DFS/BFS)</li>
+            <li>Detectar deadlock (DFS en grafo de dependencias)</li>
+          </ul>
+          <h4>Complejidades Esperadas:</h4>
+          <ul>
+            <li>Crear: O(log n) con heap de prioridad</li>
+            <li>Procesar: O(1) con cola</li>
+            <li>Cambiar prioridad: O(n)</li>
+            <li>Detectar deadlock: O(V + E)</li>
+          </ul>
+        </div>
+
+        <h3>Proyecto 2: Compresor de Archivos</h3>
+        <div class="topic-content">
+          <p>
+            Implementa algoritmo Huffman para comprimir y descomprimir archivos 
+            usando árboles binarios.
+          </p>
+          <h4>Especificación:</h4>
+          <ul>
+            <li>Leer archivo y calcular frecuencias de cada byte</li>
+            <li>Construir árbol Huffman usando heap (min-priority queue)</li>
+            <li>Generar códigos de compresión (path en árbol)</li>
+            <li>Comprimir archivo reemplazando bytes con códigos</li>
+            <li>Descomprimir usando árbol almacenado en cabecera</li>
+          </ul>
+          <h4>Estructuras Utilizadas:</h4>
+          <ul>
+            <li>Tabla Hash: Frecuencias de cada byte</li>
+            <li>Heap: Para construir árbol Huffman</li>
+            <li>Árbol Binario: Estructura del árbol Huffman</li>
+            <li>Cola de bits: Almacenar código comprimido</li>
+          </ul>
+          <h4>Algoritmo Huffman:</h4>
+          <pre><code>def huffman_compress(datos):
+    # 1. Calcular frecuencias
+    freq = contar_frecuencias(datos)
+    
+    # 2. Crear heap con nodos
+    heap = crear_heap(freq)
+    
+    # 3. Construir árbol
+    while len(heap) > 1:
+        nodo1 = heap.pop()
+        nodo2 = heap.pop()
+        padre = Nodo(freq=nodo1.freq+nodo2.freq,
+                    izq=nodo1, der=nodo2)
+        heap.push(padre)
+    
+    # 4. Generar códigos (DFS)
+    codigos = generar_codigos(heap[0])
+    
+    # 5. Comprimir
+    comprimido = codificar(datos, codigos)
+    return comprimido, heap[0]</code></pre>
+        </div>
+
+        <h3>Proyecto 3: Red Social - Búsqueda de Influenciadores</h3>
+        <div class="topic-content">
+          <p>
+            Modela una red social como grafo y encuentra usuarios influyentes usando 
+            algoritmos de grafos.
+          </p>
+          <h4>Especificación:</h4>
+          <ul>
+            <li>Grafo dirigido: usuarios → seguidores</li>
+            <li>Encontrar influenciadores (mayor out-degree)</li>
+            <li>Encontrar comunidades (componentes fuertemente conexas)</li>
+            <li>Recomendar usuarios (BFS desde usuario actual)</li>
+            <li>Distancia entre usuarios (Dijkstra ponderado por interacción)</li>
+          </ul>
+          <h4>Algoritmos:</h4>
+          <ul>
+            <li>BFS: O(V + E) - encontrar amigos en distancia k</li>
+            <li>DFS: O(V + E) - explorar red desde un usuario</li>
+            <li>Kosaraju: O(V + E) - encontrar componentes fuertemente conexas</li>
+            <li>PageRank: Iterativo - medir importancia de usuarios</li>
+          </ul>
+        </div>
+
+        <h3>Proyecto 4: Sistema de Caché LRU</h3>
+        <div class="topic-content">
+          <p>
+            Implementa un caché Least Recently Used que mantiene datos accedidos 
+            recientemente con acceso O(1).
+          </p>
+          <h4>Especificación:</h4>
+          <ul>
+            <li>Capacidad máxima fija de elementos</li>
+            <li>Get: retornar valor O(1) y marcar como recientemente usado</li>
+            <li>Put: agregar/actualizar valor, remover LRU si necesario</li>
+            <li>Mantener orden de acceso (reciente al frente)</li>
+          </ul>
+          <h4>Estructuras:</h4>
+          <ul>
+            <li>Tabla Hash: acceso O(1) a valores</li>
+            <li>Lista Doblemente Ligada: mantener orden de acceso</li>
+            <li>Combinación: Hash table + doubly linked list</li>
+          </ul>
+          <h4>Implementación Conceptual:</h4>
+          <pre><code>class LRUCache:
+    def __init__(self, capacidad):
+        self.cache = {}  # Hash: clave -> nodo
+        self.lista = DoublyLinkedList()  # Orden de acceso
+        self.capacidad = capacidad
+    
+    def get(self, clave):
+        if clave not in self.cache:
+            return -1
+        nodo = self.cache[clave]
+        self.lista.mover_al_frente(nodo)
+        return nodo.valor
+    
+    def put(self, clave, valor):
+        if clave in self.cache:
+            self.cache[clave].valor = valor
+            self.lista.mover_al_frente(self.cache[clave])
+        else:
+            if len(self.cache) >= self.capacidad:
+                nodo_viejo = self.lista.remover_final()
+                del self.cache[nodo_viejo.clave]
+            
+            nodo = self.lista.agregar_al_frente(clave, valor)
+            self.cache[clave] = nodo</code></pre>
+        </div>
+      </section>
+
+      <!-- Tema 2: Temas Especiales -->
+      <section class="topic" id="especiales">
+        <h2>2. Temas Especiales</h2>
+
+        <h3>Suffix Arrays y Búsqueda de Patrones</h3>
+        <div class="topic-content">
+          <p>
+            Estructura avanzada para búsqueda rápida de patrones en textos grandes.
+          </p>
+          <h4>Concepto:</h4>
+          <ul>
+            <li>Array de índices de todos los sufijos ordenados lexicográficamente</li>
+            <li>Permite búsqueda binaria de patrones: O(m log n)</li>
+            <li>Más simple que Suffix Trees pero O(log n) más lento</li>
+          </ul>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Búsqueda múltiple de patrones</li>
+            <li>Repeticiones comunes en textos</li>
+            <li>Compresión de datos</li>
+          </ul>
+        </div>
+
+        <h3>Segment Trees</h3>
+        <div class="topic-content">
+          <p>
+            Estructura que permite queries y updates en rangos eficientemente.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li>Query de rango: O(log n)</li>
+            <li>Update puntual: O(log n)</li>
+            <li>Update de rango: O(log n) con lazy propagation</li>
+          </ul>
+          <h4>Operaciones Soportadas:</h4>
+          <ul>
+            <li>Sum, Min, Max, GCD en rangos</li>
+            <li>Multiplicación, XOR, conteo de elementos</li>
+            <li>Actualización masiva de rangos</li>
+          </ul>
+          <h4>Complejidad:</h4>
+          <ul>
+            <li>Construcción: O(n)</li>
+            <li>Query: O(log n)</li>
+            <li>Update: O(log n)</li>
+          </ul>
+        </div>
+
+        <h3>Trie (Árbol de Prefijos)</h3>
+        <div class="topic-content">
+          <p>
+            Estructura de árbol optimizada para almacenar y buscar strings.
+          </p>
+          <h4>Operaciones:</h4>
+          <ul>
+            <li>Insertar palabra: O(m) donde m es longitud</li>
+            <li>Buscar palabra: O(m)</li>
+            <li>Autocompletado: O(m + k) donde k es resultados</li>
+            <li>Verificar prefijo: O(m)</li>
+          </ul>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Autocompletado en buscadores</li>
+            <li>Corrección de ortografía</li>
+            <li>Enrutamiento IP</li>
+            <li>Compresión de diccionarios</li>
+          </ul>
+          <h4>Ventajas sobre Tabla Hash:</h4>
+          <ul>
+            <li>✅ Búsqueda por prefijos</li>
+            <li>✅ Orden lexicográfico</li>
+            <li>✅ Rango de palabras</li>
+            <li>❌ Usa más memoria para strings cortos</li>
+          </ul>
+        </div>
+
+        <h3>Union-Find (Disjoint Set Union)</h3>
+        <div class="topic-content">
+          <p>
+            Estructura eficiente para determinar si dos elementos pertenecen al mismo conjunto.
+          </p>
+          <h4>Operaciones Principales:</h4>
+          <ul>
+            <li><strong>Find:</strong> Encuentra representante del conjunto</li>
+            <li><strong>Union:</strong> Combina dos conjuntos</li>
+          </ul>
+          <h4>Optimizaciones:</h4>
+          <ul>
+            <li>Compresión de caminos: casi O(1) amortizado</li>
+            <li>Unión por rango: evita árboles desbalanceados</li>
+          </ul>
+          <h4>Complejidad con ambas optimizaciones:</h4>
+          <ul>
+            <li>O(α(n)) amortizado, donde α es función de Ackermann inversa</li>
+            <li>Prácticamente O(1) para tamaños realistas</li>
+          </ul>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Detectar ciclos en grafos: O((V + E)α(V))</li>
+            <li>Minimum Spanning Tree (Kruskal)</li>
+            <li>Conectividad de componentes</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tema 3: Conclusión del Curso -->
+      <section class="topic" id="conclusion">
+        <h2>3. Conclusión del Curso</h2>
+
+        <h3>Recapitulación de Conceptos Clave</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Estructuras Lineales</h4>
+            <ul>
+              <li>Arrays/Listas</li>
+              <li>Pilas (LIFO)</li>
+              <li>Colas (FIFO)</li>
+              <li>Listas Ligadas</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Estructuras No Lineales</h4>
+            <ul>
+              <li>Árboles</li>
+              <li>Grafos</li>
+              <li>Tries</li>
+              <li>Heaps</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Algoritmos Fundamentales</h4>
+            <ul>
+              <li>Búsqueda (lineal, binaria)</li>
+              <li>Ordenamiento (Bubble, Quick, Merge)</li>
+              <li>Recorridos (DFS, BFS)</li>
+              <li>Complejidad (Big O)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Técnicas Avanzadas</h4>
+            <ul>
+              <li>Programación Dinámica</li>
+              <li>Greedy</li>
+              <li>Backtracking</li>
+              <li>Divide y Conquista</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Mapa Mental: Cómo Elegir la Estructura de Datos</h3>
+        <div class="card">
+          <p><strong>¿Necesitas acceso rápido a elementos?</strong></p>
+          <ul>
+            <li>Sí → Array (índice) o Tabla Hash (clave)</li>
+            <li>No → Lista Ligada</li>
+          </ul>
+          <p><strong>¿Importa el orden?</strong></p>
+          <ul>
+            <li>LIFO (último añadido primero) → Pila</li>
+            <li>FIFO (primero añadido primero) → Cola</li>
+            <li>Ordenado por prioridad → Heap</li>
+          </ul>
+          <p><strong>¿Relaciones entre elementos?</strong></p>
+          <ul>
+            <li>Jerarquía (padre-hijo) → Árbol</li>
+            <li>Conexiones complejas → Grafo</li>
+          </ul>
+          <p><strong>¿Muchas búsquedas de prefijos?</strong></p>
+          <ul>
+            <li>Sí → Trie</li>
+          </ul>
+        </div>
+
+        <h3>Perspectivas Futuras</h3>
+        <div class="topic-content">
+          <h4>Temas para Profundizar:</h4>
+          <ul>
+            <li><strong>Análisis Amortizado:</strong> Complejidad promedio en operaciones</li>
+            <li><strong>Algoritmos Distribuidos:</strong> Estructuras en sistemas distribuidos</li>
+            <li><strong>Verificación Formal:</strong> Pruebas matemáticas de correctitud</li>
+            <li><strong>Estructuras Persistentes:</strong> Mantener versiones anteriores</li>
+            <li><strong>Optimización de Cache:</strong> Algoritmos cache-oblivious</li>
+          </ul>
+
+          <h4>Aplicaciones en Industria:</h4>
+          <ul>
+            <li><strong>Bases de Datos:</strong> Índices (B-trees), queries (Hashing)</li>
+            <li><strong>Sistemas Operativos:</strong> Scheduling (colas de prioridad)</li>
+            <li><strong>Compiladores:</strong> Parsing (árboles, grafos)</li>
+            <li><strong>Redes:</strong> Routing (grafos, Dijkstra)</li>
+            <li><strong>Machine Learning:</strong> KD-trees, quad-trees para búsqueda</li>
+          </ul>
+
+          <h4>Recursos Recomendados:</h4>
+          <ul>
+            <li><strong>Libros:</strong> "Introduction to Algorithms" (CLRS), "Data Structures and Algorithms"</li>
+            <li><strong>Plataformas:</strong> LeetCode, Codeforces, AtCoder, HackerRank</li>
+            <li><strong>Visualización:</strong> VisuAlgo, Data Structure Visualizations</li>
+            <li><strong>Comunidad:</strong> Stack Overflow, GitHub, reddit/r/learnprogramming</li>
+          </ul>
+        </div>
+
+        <h3>Reflexión Final</h3>
+        <div class="card">
+          <p>
+            <strong>Las estructuras de datos son las herramientas fundamentales de la programación.</strong> 
+            Dominarlas significa poder:
+          </p>
+          <ul>
+            <li>✅ Escribir código eficiente que escala</li>
+            <li>✅ Resolver problemas complejos con elegancia</li>
+            <li>✅ Entender y contribuir a proyectos grandes</li>
+            <li>✅ Participar exitosamente en entrevistas técnicas</li>
+            <li>✅ Optimizar sistemas en producción</li>
+          </ul>
+          <p style="margin-top: 1rem; font-style: italic; color: var(--sb-600);">
+            "The craft of programming is the ability to balance multiple objectives, 
+            constraints, and tradeoffs." - Thomas Cormen (Autor de CLRS)
+          </p>
+        </div>
+      </section>
+
+      <!-- Navegación final -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <a href="./unidad5.html" class="card">
+            <h3>← Unidad Anterior</h3>
+            <p><strong>Unidad 5: Aplicaciones Avanzadas I</strong></p>
+          </a>
+          <a href="/docs/index.html" class="card">
+            <h3>Volver al Inicio →</h3>
+            <p><strong>Página Principal del Curso</strong></p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

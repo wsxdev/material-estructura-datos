@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 2: Estructuras de Datos Lineales - Pilas, Colas y Listas">
+  <title>Unidad 2 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 2</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 2: Estructuras de Datos Lineales</h1>
+      <p>Pilas, Colas y Listas: Las estructuras fundamentales para organizar datos secuenciales</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#pilas">1. Pilas (Stack)</a></li>
+          <li><a href="#colas">2. Colas (Queue)</a></li>
+          <li><a href="#listas">3. Listas</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Pilas -->
+      <section class="topic" id="pilas">
+        <h2>1. Pilas (Stack)</h2>
+
+        <h3>¿Qué es una Pila?</h3>
+        <div class="topic-content">
+          <p>
+            Una <strong>pila</strong> es una estructura de datos lineal que sigue el principio 
+            <strong>LIFO (Last In, First Out)</strong>: el último elemento añadido es el primero en salir.
+          </p>
+          <p>
+            Imaginemos una pila de platos: los platos se agregan y se retiran desde la parte superior.
+          </p>
+        </div>
+
+        <h3>Representación Gráfica</h3>
+        <div class="card">
+          <pre>
+    Pila de enteros:
+    
+    Operación: push(5)  | push(10) | push(3)  | pop()   |
+    
+    Tope → [3]         | Tope → [3]    | Tope → [3] | Tope → [10]
+           [10]        |         [10]   |        [10]|        [10]
+           [5]         |         [5]    |        [5] |        [5]
+           ----        |         ----   |        ----| ----
+          </pre>
+        </div>
+
+        <h3>Operaciones</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Operaciones Básicas</h4>
+            <ul>
+              <li><strong>push(x):</strong> Inserta x en el tope</li>
+              <li><strong>pop():</strong> Elimina y retorna el tope</li>
+              <li><strong>top():</strong> Retorna el tope sin eliminar</li>
+              <li><strong>isEmpty():</strong> ¿Está vacía?</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Complejidad</h4>
+            <ul>
+              <li>push(): O(1)</li>
+              <li>pop(): O(1)</li>
+              <li>top(): O(1)</li>
+              <li>isEmpty(): O(1)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Implementación en Python</h3>
+        <pre><code>class Pila:
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item):
+        self.items.append(item)
+    
+    def pop(self):
+        return self.items.pop() if not self.isEmpty() else None
+    
+    def top(self):
+        return self.items[-1] if not self.isEmpty() else None
+    
+    def isEmpty(self):
+        return len(self.items) == 0
+
+# Uso
+p = Pila()
+p.push(5)
+p.push(10)
+p.push(3)
+print(p.pop())  # 3
+print(p.top())  # 10</code></pre>
+
+        <h3>Aplicaciones de Pilas</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Reversión</h4>
+            <p>Invertir una secuencia o palabra</p>
+          </div>
+          <div class="card">
+            <h4>Paréntesis</h4>
+            <p>Validar paréntesis y símbolos</p>
+          </div>
+          <div class="card">
+            <h4>Historial</h4>
+            <p>Deshacer (undo) en aplicaciones</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tema 2: Colas -->
+      <section class="topic" id="colas">
+        <h2>2. Colas (Queue)</h2>
+
+        <h3>¿Qué es una Cola?</h3>
+        <div class="topic-content">
+          <p>
+            Una <strong>cola</strong> es una estructura de datos lineal que sigue el principio 
+            <strong>FIFO (First In, First Out)</strong>: el primer elemento añadido es el primero en salir.
+          </p>
+          <p>
+            Es como una fila de personas esperando: entra el primero y sale el primero.
+          </p>
+        </div>
+
+        <h3>Tipos y Representación Gráfica</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Cola Simple</h4>
+            <pre>
+Inicio → [1] [2] [3] [4] ← Final
+
+Encolar(5): [1] [2] [3] [4] [5]
+Desencolar(): [2] [3] [4] [5]
+            </pre>
+          </div>
+          <div class="card">
+            <h4>Cola Circular</h4>
+            <pre>
+      [4] [5]
+    [3]     [1]
+    [2]     [*]
+
+Optimiza el uso de memoria
+reutilizando espacios
+            </pre>
+          </div>
+        </div>
+
+        <h3>Operaciones</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Operación</th>
+                <th>Descripción</th>
+                <th>Complejidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>enqueue(x)</strong></td>
+                <td>Inserta x al final</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td><strong>dequeue()</strong></td>
+                <td>Elimina y retorna el inicio</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td><strong>front()</strong></td>
+                <td>Retorna el inicio sin eliminar</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td><strong>isEmpty()</strong></td>
+                <td>¿Está vacía?</td>
+                <td>O(1)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Implementación en Python</h3>
+        <pre><code>from collections import deque
+
+class Cola:
+    def __init__(self):
+        self.items = deque()
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        return self.items.popleft() if not self.isEmpty() else None
+    
+    def front(self):
+        return self.items[0] if not self.isEmpty() else None
+    
+    def isEmpty(self):
+        return len(self.items) == 0
+
+# Uso
+c = Cola()
+c.enqueue(1)
+c.enqueue(2)
+c.enqueue(3)
+print(c.dequeue())  # 1
+print(c.front())    # 2</code></pre>
+
+        <h3>Aplicaciones de Colas</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Impresión</h4>
+            <p>Gestionar trabajos de impresión en orden</p>
+          </div>
+          <div class="card">
+            <h4>Redes</h4>
+            <p>Buffers en comunicación de datos</p>
+          </div>
+          <div class="card">
+            <h4>Juegos</h4>
+            <p>Gestionar eventos en orden de llegada</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tema 3: Listas -->
+      <section class="topic" id="listas">
+        <h2>3. Listas</h2>
+
+        <h3>¿Qué es un Nodo?</h3>
+        <div class="topic-content">
+          <p>
+            Un <strong>nodo</strong> es la unidad básica de una lista enlazada. Contiene:
+          </p>
+          <ul>
+            <li><strong>Dato:</strong> El valor almacenado</li>
+            <li><strong>Referencia/Puntero:</strong> Apunta al siguiente nodo</li>
+          </ul>
+          <pre><code>class Nodo:
+    def __init__(self, dato):
+        self.dato = dato
+        self.siguiente = None</code></pre>
+        </div>
+
+        <h3>¿Qué es una Lista?</h3>
+        <div class="topic-content">
+          <p>
+            Una <strong>lista enlazada</strong> es una secuencia de nodos conectados por referencias.
+            Permiten inserción y eliminación eficiente en posiciones arbitrarias.
+          </p>
+        </div>
+
+        <h3>Tipos y Representación Gráfica</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Lista Simple</h4>
+            <pre>
+Inicio → [1|→] → [2|→] → [3|→] → [4|None]
+
+Acceso secuencial
+Eliminación O(n)
+            </pre>
+          </div>
+          <div class="card">
+            <h4>Lista Doble</h4>
+            <pre>
+[None|1|→] ← → [2|→] ← → [3|→] ← → [4|None]
+
+Navegación bidireccional
+Más memoria
+            </pre>
+          </div>
+        </div>
+
+        <h3>Operaciones en Listas</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Operación</th>
+                <th>Lista Simple</th>
+                <th>Lista Doble</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Acceso</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Inserción al inicio</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td>Inserción en posición</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Eliminación</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Implementación de Lista Simple</h3>
+        <pre><code>class ListaSimple:
+    def __init__(self):
+        self.inicio = None
+    
+    def insertar_inicio(self, dato):
+        nodo = Nodo(dato)
+        nodo.siguiente = self.inicio
+        self.inicio = nodo
+    
+    def insertar_final(self, dato):
+        nodo = Nodo(dato)
+        if self.inicio is None:
+            self.inicio = nodo
+            return
+        actual = self.inicio
+        while actual.siguiente:
+            actual = actual.siguiente
+        actual.siguiente = nodo
+    
+    def mostrar(self):
+        actual = self.inicio
+        while actual:
+            print(actual.dato, end=" → ")
+            actual = actual.siguiente
+        print("None")</code></pre>
+
+        <h3>Aplicaciones de Listas</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Listas Dinámicas</h4>
+            <p>Tamaño flexible, inserción eficiente</p>
+          </div>
+          <div class="card">
+            <h4>Gestión Memoria</h4>
+            <p>Asignación dinámica sin desperdicio</p>
+          </div>
+          <div class="card">
+            <h4>Operaciones</h4>
+            <p>Base para pilas y colas</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumen -->
+      <section class="topic">
+        <h2>Resumen de la Unidad 2</h2>
+        <div class="card">
+          <ul>
+            <li>Pilas siguen LIFO, óptimas para reversión e historial</li>
+            <li>Colas siguen FIFO, ideales para colas de espera</li>
+            <li>Listas enlazadas ofrecen flexibilidad en tamaño</li>
+            <li>Todas operan con O(1) para operaciones básicas</li>
+            <li>Son la base para estructuras más complejas</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navegación entre unidades -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <a href="./unidad1.html" class="card">
+            <h3>← Unidad Anterior</h3>
+            <p><strong>Unidad 1: Fundamentos e Introducción</strong></p>
+          </a>
+          <a href="./unidad3.html" class="card">
+            <h3>Unidad Siguiente →</h3>
+            <p><strong>Unidad 3: Estructuras No Lineales</strong></p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

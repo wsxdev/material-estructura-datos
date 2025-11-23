@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 1: Fundamentos e Introducción a Estructuras de Datos">
+  <title>Unidad 1 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 1</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 1: Fundamentos e Introducción</h1>
+      <p>Conceptos básicos de estructuras de datos, tipos de datos y fundamentos de algoritmia</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#introduccion">1. Introducción</a></li>
+          <li><a href="#tipos-datos">2. Tipos de Datos</a></li>
+          <li><a href="#datos-compuestos">3. Datos Compuestos</a></li>
+          <li><a href="#algoritmia">4. Fundamentos de Algoritmia</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Introducción -->
+      <section class="topic" id="introduccion">
+        <h2>1. Introducción</h2>
+
+        <h3>Historia de las Estructuras de Datos</h3>
+        <div class="topic-content">
+          <p>
+            Las estructuras de datos surgieron como necesidad fundamental en la informática para organizar 
+            y gestionar información de manera eficiente. Su evolución ha acompañado el desarrollo de los 
+            lenguajes de programación y la arquitectura de computadores.
+          </p>
+          <ul>
+            <li><strong>1950s-1960s:</strong> Primeras abstracciones de datos en lenguajes como FORTRAN y ALGOL</li>
+            <li><strong>1970s:</strong> Desarrollo de estructuras fundamentales: arrays, listas enlazadas, árboles</li>
+            <li><strong>1980s:</strong> Programación orientada a objetos y encapsulamiento de estructuras</li>
+            <li><strong>1990s-Presente:</strong> Estructuras avanzadas, garbage collection, y optimizaciones modernas</li>
+          </ul>
+        </div>
+
+        <h3>Características Principales</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Eficiencia</h4>
+            <p>Busca minimizar el tiempo de acceso, inserción y eliminación de datos</p>
+          </div>
+          <div class="card">
+            <h4>Memoria</h4>
+            <p>Optimiza el uso del espacio en memoria disponible del sistema</p>
+          </div>
+          <div class="card">
+            <h4>Facilidad</h4>
+            <p>Proporciona interfaces simples para manipular datos complejos</p>
+          </div>
+        </div>
+
+        <h3>Ventajas y Desventajas</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Ventajas</h4>
+            <ul>
+              <li>Mejoran la velocidad de acceso a datos</li>
+              <li>Permiten resolver problemas complejos</li>
+              <li>Facilitan el mantenimiento del código</li>
+              <li>Optimizan el uso de recursos</li>
+              <li>Base para algoritmos eficientes</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Desventajas</h4>
+            <ul>
+              <li>Requieren mayor complejidad de implementación</li>
+              <li>Mayor curva de aprendizaje</li>
+              <li>Overhead de memoria en algunos casos</li>
+              <li>Selección incorrecta puede degradar rendimiento</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tema 2: Tipos de Datos -->
+      <section class="topic" id="tipos-datos">
+        <h2>2. Tipos de Datos</h2>
+
+        <h3>Tipos Primitivos de Datos</h3>
+        <div class="topic-content">
+          <p>Son los tipos básicos que proporciona un lenguaje de programación:</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Rango Típico</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>int</code></td>
+                <td>Número entero</td>
+                <td>-2³¹ a 2³¹-1</td>
+                <td>42, -100</td>
+              </tr>
+              <tr>
+                <td><code>float</code></td>
+                <td>Número con decimales</td>
+                <td>±1.4E-45 a ±3.4E+38</td>
+                <td>3.14, 2.71</td>
+              </tr>
+              <tr>
+                <td><code>double</code></td>
+                <td>Número decimal de mayor precisión</td>
+                <td>±4.9E-324 a ±1.7E+308</td>
+                <td>3.14159265</td>
+              </tr>
+              <tr>
+                <td><code>boolean</code></td>
+                <td>Valor lógico</td>
+                <td>true, false</td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td><code>char</code></td>
+                <td>Carácter individual</td>
+                <td>0 a 65535</td>
+                <td>'A', 'x'</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Tipos de Datos Compuestos</h3>
+        <div class="topic-content">
+          <p>Combinan tipos primitivos para crear estructuras más complejas:</p>
+          <ul>
+            <li><strong>Registros (struct/record):</strong> Agrupación de datos heterogéneos</li>
+            <li><strong>Uniones (union):</strong> Comparten la misma ubicación de memoria</li>
+            <li><strong>Enumeraciones (enum):</strong> Conjunto de valores nominales</li>
+          </ul>
+        </div>
+
+        <h3>Tipos Agregados o Estructuras de Datos</h3>
+        <div class="card">
+          <p>Colecciones de elementos del mismo tipo o de tipos diferentes:</p>
+          <ul>
+            <li><strong>Arrays:</strong> Secuencia de elementos del mismo tipo con acceso indexado</li>
+            <li><strong>Listas:</strong> Secuencia flexible de elementos</li>
+            <li><strong>Pilas:</strong> Acceso LIFO (Last In First Out)</li>
+            <li><strong>Colas:</strong> Acceso FIFO (First In First Out)</li>
+            <li><strong>Árboles:</strong> Estructura jerárquica</li>
+            <li><strong>Grafos:</strong> Nodos conectados por aristas</li>
+          </ul>
+        </div>
+
+        <h3>Tipos Abstractos de Datos (TAD)</h3>
+        <div class="topic-content">
+          <p>
+            Un TAD es un modelo matemático que especifica qué datos se almacenan y qué operaciones 
+            se pueden realizar sobre ellos, abstrayéndose de la implementación específica.
+          </p>
+          <pre><code>// TAD: Conjunto
+TAD Conjunto
+  Dominio: Conjunto de enteros
+  Operaciones:
+    - crearConjunto() → Conjunto
+    - agregar(c: Conjunto, x: int) → Conjunto
+    - contiene(c: Conjunto, x: int) → bool
+    - tamaño(c: Conjunto) → int
+Fin TAD</code></pre>
+        </div>
+      </section>
+
+      <!-- Tema 3: Datos Compuestos -->
+      <section class="topic" id="datos-compuestos">
+        <h2>3. Datos Compuestos</h2>
+
+        <h3>Vectores (Arrays)</h3>
+        <div class="topic-content">
+          <p>
+            Un vector es una secuencia de elementos del mismo tipo almacenados en posiciones 
+            consecutivas de memoria. El acceso a cada elemento se realiza mediante un índice.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li>Acceso O(1) a elementos por índice</li>
+            <li>Tamaño fijo en la mayoría de lenguajes</li>
+            <li>Elemento en posición i está en dirección: base + (i × tamaño_elemento)</li>
+          </ul>
+          <h4>Ejemplo:</h4>
+          <pre><code>// Vector de 5 elementos enteros
+int[] numeros = {10, 20, 30, 40, 50};
+// Acceso: numeros[0] = 10, numeros[4] = 50</code></pre>
+        </div>
+
+        <h3>Matrices</h3>
+        <div class="topic-content">
+          <p>
+            Una matriz es un arreglo bidimensional de elementos del mismo tipo, organizado en filas y columnas.
+          </p>
+          <h4>Representación en Memoria:</h4>
+          <ul>
+            <li><strong>Por filas (Row-major):</strong> Orden: M[0][0], M[0][1], M[1][0], M[1][1]</li>
+            <li><strong>Por columnas (Column-major):</strong> Orden: M[0][0], M[1][0], M[0][1], M[1][1]</li>
+          </ul>
+          <h4>Ejemplo:</h4>
+          <pre><code>// Matriz 3x3
+int[][] matriz = {
+  {1, 2, 3},
+  {4, 5, 6},
+  {7, 8, 9}
+};
+// Acceso: matriz[1][2] = 6</code></pre>
+        </div>
+
+        <h3>Registros (Structs)</h3>
+        <div class="topic-content">
+          <p>
+            Un registro es una estructura que agrupa datos de tipos diferentes bajo un mismo nombre, 
+            permitiendo acceso a través de campos nombrados.
+          </p>
+          <h4>Ejemplo:</h4>
+          <pre><code>// Definición de un registro
+struct Estudiante {
+  string nombre;
+  int id;
+  float promedio;
+};
+
+// Uso
+Estudiante est = {"Juan", 12345, 8.5};
+est.promedio = 9.0;</code></pre>
+        </div>
+      </section>
+
+      <!-- Tema 4: Fundamentos de Algoritmia -->
+      <section class="topic" id="algoritmia">
+        <h2>4. Fundamentos de Algoritmia</h2>
+
+        <h3>Concepto de Algoritmo</h3>
+        <div class="topic-content">
+          <p>
+            <strong>Un algoritmo es un conjunto de instrucciones ordenadas y finitas que, 
+            tras ser ejecutadas, resuelven un problema específico.</strong>
+          </p>
+          <h4>Características de un Algoritmo:</h4>
+          <ul>
+            <li><strong>Finito:</strong> Tiene un número determinado de pasos</li>
+            <li><strong>Determinista:</strong> Produce el mismo resultado para las mismas entradas</li>
+            <li><strong>Bien definido:</strong> Cada paso es claro e inequívoco</li>
+            <li><strong>Eficiente:</strong> Resuelve el problema de forma óptima</li>
+          </ul>
+        </div>
+
+        <h3>Representación de Algoritmos</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>1️⃣ Lenguaje Natural</h4>
+            <p>Descripción en idioma humano. Fácil de entender pero ambiguo.</p>
+          </div>
+          <div class="card">
+            <h4>2️⃣ Pseudocódigo</h4>
+            <p>Mezcla de lenguaje natural y programación. Balance entre claridad y precisión.</p>
+          </div>
+          <div class="card">
+            <h4>3️⃣ Diagramas de Flujo</h4>
+            <p>Representación gráfica del flujo de control. Útil para visualizar lógica.</p>
+          </div>
+        </div>
+
+        <h3>Ejemplo: Búsqueda Lineal</h3>
+        <div class="topic-content">
+          <h4>Pseudocódigo:</h4>
+          <pre><code>función buscarLineal(arreglo[], objetivo):
+  para i = 0 hasta longitud(arreglo) - 1:
+    si arreglo[i] == objetivo:
+      retornar i
+  retornar -1  // No encontrado</code></pre>
+
+          <h4>Implementación en Python:</h4>
+          <pre><code>def buscar_lineal(arreglo, objetivo):
+    for i in range(len(arreglo)):
+        if arreglo[i] == objetivo:
+            return i
+    return -1
+
+# Uso
+resultado = buscar_lineal([10, 20, 30, 40, 50], 30)
+print(resultado)  # Salida: 2</code></pre>
+        </div>
+
+        <h3>Complejidad de Algoritmos (Introducción)</h3>
+        <div class="topic-content">
+          <p>
+            La complejidad de un algoritmo mide cómo crecen sus recursos (tiempo y memoria) 
+            en función del tamaño de la entrada.
+          </p>
+          <h4>Notación Big O:</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Notación</th>
+                <th>Nombre</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>O(1)</td>
+                <td>Constante</td>
+                <td>Acceso a array por índice</td>
+              </tr>
+              <tr>
+                <td>O(log n)</td>
+                <td>Logarítmica</td>
+                <td>Búsqueda binaria</td>
+              </tr>
+              <tr>
+                <td>O(n)</td>
+                <td>Lineal</td>
+                <td>Búsqueda lineal</td>
+              </tr>
+              <tr>
+                <td>O(n log n)</td>
+                <td>Lineal-logarítmica</td>
+                <td>Merge sort</td>
+              </tr>
+              <tr>
+                <td>O(n²)</td>
+                <td>Cuadrática</td>
+                <td>Bubble sort</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Ciencias de la Computación Simplificadas</h3>
+        <div class="card">
+          <h4>Conceptos Clave:</h4>
+          <ul>
+            <li><strong>Abstracción:</strong> Simplificar problemas complejos enfocándose en lo esencial</li>
+            <li><strong>Modularidad:</strong> Dividir el código en componentes independientes y reutilizables</li>
+            <li><strong>Recursión:</strong> Resolver problemas dividiéndolos en versiones más pequeñas del mismo problema</li>
+            <li><strong>Análisis de complejidad:</strong> Evaluar eficiencia de algoritmos</li>
+            <li><strong>Pruebas y validación:</strong> Verificar que el algoritmo funciona correctamente</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Resumen -->
+      <section class="topic">
+        <h2>Resumen de la Unidad 1</h2>
+        <div class="card">
+          <ul>
+            <li>Las estructuras de datos son esenciales para organizar información eficientemente</li>
+            <li>Existen tipos primitivos, compuestos y abstractos de datos</li>
+            <li>Vectores y matrices son estructuras fundamentales para almacenamiento</li>
+            <li>Los algoritmos son soluciones ordenadas a problemas específicos</li>
+            <li>La complejidad mide la eficiencia de un algoritmo</li>
+            <li>La abstracción y modularidad son conceptos clave en programación</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Actividades -->
+      <section class="topic">
+        <h2>Actividades Propuestas</h2>
+        <div class="grid grid-cols-1">
+          <div class="card">
+            <h3>✏️ Ejercicio 1: Tipos de Datos</h3>
+            <p>Crea un programa que defina variables de diferentes tipos primitivos y demuestre sus rangos.</p>
+          </div>
+          <div class="card">
+            <h3>✏️ Ejercicio 2: Vectores</h3>
+            <p>Implementa una función que busque el elemento máximo en un vector y otra que invierta sus elementos.</p>
+          </div>
+          <div class="card">
+            <h3>✏️ Ejercicio 3: Matrices</h3>
+            <p>Crea una matriz de 4x4 e implementa función para calcular la suma de la diagonal principal.</p>
+          </div>
+          <div class="card">
+            <h3>✏️ Ejercicio 4: Algoritmos</h3>
+            <p>Escribe pseudocódigo para un algoritmo que determine si una palabra es palíndromo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navegación entre unidades -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <div style="opacity: 0.5;">
+            <h3>← Unidad Anterior</h3>
+            <p>No disponible (Primera unidad)</p>
+          </div>
+          <a href="./unidad2.html" class="card">
+            <h3>Unidad Siguiente →</h3>
+            <p><strong>Unidad 2: Estructuras de Datos Lineales</strong></p>
+            <p>Aprende sobre pilas, colas y listas enlazadas</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

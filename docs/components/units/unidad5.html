@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 5: Aplicaciones Avanzadas I - Optimizaciones y programación competitiva">
+  <title>Unidad 5 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 5</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 5: Aplicaciones Avanzadas I</h1>
+      <p>Optimizaciones, patrones avanzados, y conceptos de programación competitiva</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#optimizacion">1. Técnicas de Optimización</a></li>
+          <li><a href="#patrones">2. Patrones Avanzados</a></li>
+          <li><a href="#competitiva">3. Programación Competitiva</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Técnicas de Optimización -->
+      <section class="topic" id="optimizacion">
+        <h2>1. Técnicas de Optimización</h2>
+
+        <h3>Memoización</h3>
+        <div class="topic-content">
+          <p>
+            Técnica de almacenar resultados previos para evitar recalcular subproblemas 
+            en programación dinámica y recursión.
+          </p>
+          <h4>Ejemplo: Fibonacci Optimizado</h4>
+          <pre><code>def fibonacci(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    
+    memo[n] = fibonacci(n-1, memo) + fibonacci(n-2, memo)
+    return memo[n]
+
+# Sin memoización: O(2^n)
+# Con memoización: O(n)</code></pre>
+          <h4>Beneficios:</h4>
+          <ul>
+            <li>Reduce complejidad de exponencial a polinomial</li>
+            <li>Evita cálculos redundantes</li>
+            <li>Especialmente útil en recursión</li>
+          </ul>
+        </div>
+
+        <h3>Ventanas Deslizantes (Sliding Window)</h3>
+        <div class="topic-content">
+          <p>
+            Técnica para resolver problemas de subarrays/subcadenas manteniendo una ventana 
+            de tamaño constante que se desplaza a través de la estructura.
+          </p>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Máximo/mínimo en subarrays</li>
+            <li>Búsqueda de patrones</li>
+            <li>Problemas de contigüidad</li>
+          </ul>
+          <h4>Complejidad:</h4>
+          <ul>
+            <li>Tiempo: O(n) vs O(n²) con fuerza bruta</li>
+            <li>Espacio: O(1)</li>
+          </ul>
+          <pre><code>def max_subarray_suma(arr, k):
+    # Calcular suma de primera ventana
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+    
+    # Deslizar ventana
+    for i in range(k, len(arr)):
+        window_sum = window_sum - arr[i-k] + arr[i]
+        max_sum = max(max_sum, window_sum)
+    
+    return max_sum</code></pre>
+        </div>
+
+        <h3>Programación Dinámica</h3>
+        <div class="topic-content">
+          <p>
+            Resuelve problemas dividiéndolos en subproblemas, almacenando resultados y 
+            combinándolos para la solución final.
+          </p>
+          <h4>Características:</h4>
+          <ul>
+            <li>Óptima subestructura: soluciones óptimas de subproblemas</li>
+            <li>Subproblemas solapados: se repiten durante la resolución</li>
+            <li>Memoización o tabulación para evitar recálculos</li>
+          </ul>
+          <h4>Ejemplo: Problema de la Mochila (0/1 Knapsack)</h4>
+          <pre><code>def knapsack(capacidad, pesos, valores, n):
+    dp = [[0] * (capacidad + 1) for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        for w in range(1, capacidad + 1):
+            if pesos[i-1] <= w:
+                dp[i][w] = max(
+                    valores[i-1] + dp[i-1][w-pesos[i-1]],
+                    dp[i-1][w]
+                )
+            else:
+                dp[i][w] = dp[i-1][w]
+    
+    return dp[n][capacidad]</code></pre>
+          <h4>Complejidad: O(n * capacidad)</h4>
+        </div>
+
+        <h3>Búsqueda Binaria Avanzada</h3>
+        <div class="topic-content">
+          <p>
+            Más allá de búsqueda simple, incluye búsqueda del primer/último elemento, 
+            búsqueda en predicados, y aplicaciones en optimización.
+          </p>
+          <h4>Variantes Útiles:</h4>
+          <ul>
+            <li><strong>Primer Elemento:</strong> Buscar el primer >= objetivo</li>
+            <li><strong>Último Elemento:</strong> Buscar el último <= objetivo</li>
+            <li><strong>Predicado:</strong> Buscar transición de condición</li>
+          </ul>
+          <h4>Aplicación: Encontrar Primer Elemento >= Objetivo</h4>
+          <pre><code>def busqueda_primer_mayor(arr, objetivo):
+    izquierda, derecha = 0, len(arr) - 1
+    resultado = -1
+    
+    while izquierda <= derecha:
+        medio = (izquierda + derecha) // 2
+        if arr[medio] >= objetivo:
+            resultado = medio
+            derecha = medio - 1
+        else:
+            izquierda = medio + 1
+    
+    return resultado</code></pre>
+        </div>
+      </section>
+
+      <!-- Tema 2: Patrones Avanzados -->
+      <section class="topic" id="patrones">
+        <h2>2. Patrones Avanzados</h2>
+
+        <h3>Backtracking (Retroceso)</h3>
+        <div class="topic-content">
+          <p>
+            Técnica para explorar todas las posibles soluciones, retrocediendo cuando se 
+            alcanza un estado inválido.
+          </p>
+          <h4>Aplicaciones:</h4>
+          <ul>
+            <li>Problema de N-reinas</li>
+            <li>Sudoku y puzles</li>
+            <li>Generación de permutaciones</li>
+            <li>Búsqueda de rutas en laberintos</li>
+          </ul>
+          <h4>Patrón Básico:</h4>
+          <pre><code>def backtrack(camino, restricciones):
+    # Caso base: solución completa
+    if es_solucion(camino):
+        guardar_resultado(camino)
+        return
+    
+    # Explorar opciones
+    for opcion in obtener_opciones(restricciones):
+        if es_valida(opcion, camino):
+            camino.append(opcion)
+            backtrack(camino, restricciones)
+            camino.pop()  # Retroceso</code></pre>
+        </div>
+
+        <h3>Greedy (Codicioso)</h3>
+        <div class="topic-content">
+          <p>
+            Algoritmo que toma decisiones locales óptimas en cada paso, esperando 
+            obtener una solución global óptima.
+          </p>
+          <h4>Cuándo Funciona:</h4>
+          <ul>
+            <li>Problema tiene propiedad de estructura óptima</li>
+            <li>Elección localmente óptima lleva a solución global</li>
+          </ul>
+          <h4>Ejemplo: Selección de Actividades</h4>
+          <pre><code>def actividades_maximas(actividades):
+    # actividades = [(inicio, fin), ...]
+    # Ordenar por tiempo de finalización
+    actividades.sort(key=lambda x: x[1])
+    
+    seleccionadas = [actividades[0]]
+    ultima_fin = actividades[0][1]
+    
+    for i in range(1, len(actividades)):
+        if actividades[i][0] >= ultima_fin:
+            seleccionadas.append(actividades[i])
+            ultima_fin = actividades[i][1]
+    
+    return seleccionadas</code></pre>
+          <h4>Complejidad: O(n log n)</h4>
+        </div>
+
+        <h3>Divide y Conquista</h3>
+        <div class="topic-content">
+          <p>
+            Divide el problema en subproblemas menores, resuelve cada uno recursivamente, 
+            y combina las soluciones.
+          </p>
+          <h4>Pasos:</h4>
+          <ol>
+            <li><strong>Dividir:</strong> Partir el problema en subproblemas</li>
+            <li><strong>Conquistar:</strong> Resolver recursivamente</li>
+            <li><strong>Combinar:</strong> Integrar soluciones</li>
+          </ol>
+          <h4>Ejemplos:</h4>
+          <ul>
+            <li>Mergesort</li>
+            <li>Quicksort</li>
+            <li>Búsqueda binaria</li>
+            <li>Multiplicación de matrices (Strassen)</li>
+          </ul>
+        </div>
+
+        <h3>Grafos: Algoritmos Avanzados</h3>
+        <div class="topic-content">
+          <h4>Dijkstra - Camino Más Corto con Pesos Positivos</h4>
+          <ul>
+            <li>Complejidad: O((V + E) log V) con min-heap</li>
+            <li>Aplicaciones: Redes, GPS, routing</li>
+          </ul>
+          <h4>Floyd-Warshall - Todos los Pares</h4>
+          <ul>
+            <li>Complejidad: O(V³)</li>
+            <li>Ventaja: Maneja pesos negativos</li>
+          </ul>
+          <h4>Componentes Fuertemente Conexas (SCC)</h4>
+          <ul>
+            <li>Kosaraju o Tarjan</li>
+            <li>Aplicaciones: Análisis de dependencias, SCCs en redes sociales</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tema 3: Programación Competitiva -->
+      <section class="topic" id="competitiva">
+        <h2>3. Programación Competitiva</h2>
+
+        <h3>Conceptos Clave</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Límites de Tiempo</h4>
+            <p>Típicamente 1-2 segundos. ~10⁸ ops/seg</p>
+          </div>
+          <div class="card">
+            <h4>Memoria</h4>
+            <p>256-512 MB. Optimizar estructuras</p>
+          </div>
+          <div class="card">
+            <h4>Complejidad Viable</h4>
+            <p>O(n²) para n≤10⁴, O(n log n) para n≤10⁶</p>
+          </div>
+        </div>
+
+        <h3>Estrategias de Solución</h3>
+        <div class="topic-content">
+          <h4>1. Análisis de Límites</h4>
+          <p>
+            Identifica los límites del problema para elegir la mejor estrategia:
+          </p>
+          <ul>
+            <li>n ≤ 20: Fuerza bruta, backtracking</li>
+            <li>n ≤ 1000: O(n²)</li>
+            <li>n ≤ 10⁵: O(n log n)</li>
+            <li>n ≤ 10⁶: O(n)</li>
+          </ul>
+
+          <h4>2. Búsqueda Exhaustiva</h4>
+          <p>Para problemas pequeños, explora todas las soluciones posibles.</p>
+
+          <h4>3. Construcción Greedy</h4>
+          <p>Si el algoritmo greedy es correcto, es más rápido que otras técnicas.</p>
+
+          <h4>4. Búsqueda Binaria en la Respuesta</h4>
+          <p>
+            Si puedes verificar rápidamente si cierta respuesta es válida, 
+            busca binariamente sobre el rango de respuestas.
+          </p>
+
+          <h4>5. Estructuras de Datos Eficientes</h4>
+          <ul>
+            <li>Hash tables para búsqueda O(1)</li>
+            <li>Heaps para encontrar mínimo/máximo</li>
+            <li>Union-Find para conectividad</li>
+            <li>Segment trees para queries sobre rangos</li>
+          </ul>
+        </div>
+
+        <h3>Errores Comunes y Cómo Evitarlos</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Error</th>
+                <th>Causa</th>
+                <th>Solución</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Time Limit Exceeded</td>
+                <td>Algoritmo demasiado lento</td>
+                <td>Analiza complejidad, usa estructuras más eficientes</td>
+              </tr>
+              <tr>
+                <td>Memory Limit</td>
+                <td>Demasiada memoria asignada</td>
+                <td>Usa tipos más pequeños, libera memoria no usada</td>
+              </tr>
+              <tr>
+                <td>Wrong Answer</td>
+                <td>Lógica incorrecta</td>
+                <td>Prueba con casos borde, casos pequeños</td>
+              </tr>
+              <tr>
+                <td>Runtime Error</td>
+                <td>Acceso fuera de límites</td>
+                <td>Verifica índices, arregla divisiones por cero</td>
+              </tr>
+              <tr>
+                <td>Precision Error</td>
+                <td>Problemas con floats</td>
+                <td>Usa epsilon en comparaciones, evita resta de números similares</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Plataformas de Práctica</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Competitivas</h4>
+            <ul>
+              <li>Codeforces</li>
+              <li>AtCoder</li>
+              <li>TopCoder</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>De Aprendizaje</h4>
+            <ul>
+              <li>LeetCode</li>
+              <li>HackerRank</li>
+              <li>Project Euler</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumen -->
+      <section class="topic">
+        <h2>Resumen de la Unidad 5</h2>
+        <div class="card">
+          <ul>
+            <li>Memoización reduce problemas exponenciales a polinomiales</li>
+            <li>Sliding window optimiza problemas de subarrays a O(n)</li>
+            <li>Programación dinámica resuelve problemas con subproblemas solapados</li>
+            <li>Backtracking explora todas las posibilidades sistemáticamente</li>
+            <li>Algoritmos greedy funcionan bien cuando existe estructura óptima local</li>
+            <li>Programación competitiva requiere conocer límites y elegir estrategia</li>
+            <li>Las estructuras de datos eficientes son cruciales para el rendimiento</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navegación entre unidades -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <a href="./unidad4.html" class="card">
+            <h3>← Unidad Anterior</h3>
+            <p><strong>Unidad 4: Búsqueda y Ordenamiento</strong></p>
+          </a>
+          <a href="./unidad6.html" class="card">
+            <h3>Unidad Siguiente →</h3>
+            <p><strong>Unidad 6: Aplicaciones Avanzadas II</strong></p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 3: Estructuras de Datos No Lineales - Árboles y Grafos">
+  <title>Unidad 3 - Estructura de Datos</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="../../../index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../../../index.html">Inicio</a></li>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html#ciclos">Ciclos</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../../../index.html">Inicio</a>
+      <span>/</span>
+      <a href="../../../index.html#ciclos">Ciclos</a>
+      <span>/</span>
+      <span>Unidad 3</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Unidad 3: Estructuras de Datos No Lineales</h1>
+      <p>Árboles, Grafos y Visualización: Estructuras jerárquicas y de red</p>
+    </section>
+
+    <div class="container">
+      <!-- Tabla de Contenidos -->
+      <aside class="toc">
+        <h3>Contenido de esta Unidad</h3>
+        <ul>
+          <li><a href="#visualizacion">1. Visualización de Algoritmos</a></li>
+          <li><a href="#arboles">2. Árboles</a></li>
+          <li><a href="#grafos">3. Grafos</a></li>
+        </ul>
+      </aside>
+
+      <!-- Tema 1: Visualización -->
+      <section class="topic" id="visualizacion">
+        <h2>1. Visualización de Algoritmos</h2>
+
+        <h3>Importancia de la Visualización</h3>
+        <div class="topic-content">
+          <p>
+            La visualización de algoritmos es fundamental para comprender cómo funcionan 
+            estructuras complejas. Permite identificar patrones, errores y optimizaciones.
+          </p>
+        </div>
+
+        <h3>Herramientas Recomendadas</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Herramientas Online</h4>
+            <ul>
+              <li>VisuAlgo.net - Visualización de algoritmos</li>
+              <li>Sorting Visualizer - Ordenamientos</li>
+              <li>Graph Online - Grafos interactivos</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Bibliotecas de Programación</h4>
+            <ul>
+              <li>Graphviz - Renderizar grafos</li>
+              <li>Matplotlib - Python visualización</li>
+              <li>D3.js - Visualización web interactiva</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Técnicas de Visualización</h3>
+        <div class="card">
+          <ul>
+            <li><strong>Diagramas de árbol:</strong> Mostrar estructura jerárquica</li>
+            <li><strong>Grafos dirigidos:</strong> Relaciones y dependencias</li>
+            <li><strong>Animaciones:</strong> Mostrar paso a paso la ejecución</li>
+            <li><strong>Matrices de adyacencia:</strong> Representar conectividad</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tema 2: Árboles -->
+      <section class="topic" id="arboles">
+        <h2>2. Árboles</h2>
+
+        <h3>Definición de Árbol</h3>
+        <div class="topic-content">
+          <p>
+            Un <strong>árbol</strong> es una estructura de datos no lineal que consiste en nodos 
+            conectados por aristas, donde existe un nodo especial llamado raíz y no existen ciclos.
+          </p>
+          <h4>Términos:</h4>
+          <ul>
+            <li><strong>Raíz:</strong> Nodo sin padre</li>
+            <li><strong>Hoja:</strong> Nodo sin hijos</li>
+            <li><strong>Altura:</strong> Distancia máxima a una hoja</li>
+            <li><strong>Nivel:</strong> Distancia desde la raíz</li>
+          </ul>
+        </div>
+
+        <h3>Representación</h3>
+        <div class="card">
+          <pre>
+      Árbol Binario:
+      
+            A
+           / \
+          B   C
+         / \   \
+        D   E   F
+        
+Raíz: A
+Hojas: D, E, F
+Altura: 2
+          </pre>
+        </div>
+
+        <h3>Recorridos en Árboles</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Recorridos en Profundidad</h4>
+            <ul>
+              <li><strong>Preorden:</strong> A, B, D, E, C, F</li>
+              <li><strong>Inorden:</strong> D, B, E, A, C, F</li>
+              <li><strong>Postorden:</strong> D, E, B, F, C, A</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Recorridos en Amplitud</h4>
+            <ul>
+              <li><strong>BFS (Breadth-First):</strong> A, B, C, D, E, F</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Tipos Especiales de Árboles</h3>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h4>Árbol Binario de Búsqueda</h4>
+            <p>Izquierda < Raíz < Derecha, búsqueda O(log n)</p>
+          </div>
+          <div class="card">
+            <h4>Árbol AVL</h4>
+            <p>Árbol binario balanceado, altura O(log n)</p>
+          </div>
+          <div class="card">
+            <h4>Árbol Rojo-Negro</h4>
+            <p>Árbol binario con propiedades de balance</p>
+          </div>
+        </div>
+
+        <h3>Métodos Comunes</h3>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Método</th>
+                <th>Descripción</th>
+                <th>ABB Promedio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>búsqueda()</td>
+                <td>Encontrar un elemento</td>
+                <td>O(log n)</td>
+              </tr>
+              <tr>
+                <td>inserción()</td>
+                <td>Agregar un elemento</td>
+                <td>O(log n)</td>
+              </tr>
+              <tr>
+                <td>eliminación()</td>
+                <td>Remover un elemento</td>
+                <td>O(log n)</td>
+              </tr>
+              <tr>
+                <td>recorrido()</td>
+                <td>Visitar todos los nodos</td>
+                <td>O(n)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tema 3: Grafos -->
+      <section class="topic" id="grafos">
+        <h2>3. Grafos</h2>
+
+        <h3>Definición</h3>
+        <div class="topic-content">
+          <p>
+            Un <strong>grafo</strong> es una estructura de datos que consiste en vértices (nodos) 
+            conectados por aristas. Pueden tener ciclos, múltiples conexiones y ser no conexo.
+          </p>
+        </div>
+
+        <h3>Tipos de Grafos</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Por Dirección</h4>
+            <ul>
+              <li><strong>Grafo No Dirigido:</strong> Las aristas van en ambas direcciones</li>
+              <li><strong>Grafo Dirigido (Digrafo):</strong> Las aristas tienen dirección</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Por Peso</h4>
+            <ul>
+              <li><strong>Grafo No Ponderado:</strong> Todas las aristas tienen peso 1</li>
+              <li><strong>Grafo Ponderado:</strong> Las aristas tienen pesos variables</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Propiedades</h3>
+        <div class="card">
+          <ul>
+            <li><strong>Orden:</strong> Número de vértices</li>
+            <li><strong>Tamaño:</strong> Número de aristas</li>
+            <li><strong>Grado:</strong> Número de aristas incidentes a un vértice</li>
+            <li><strong>Camino:</strong> Secuencia de vértices conectados</li>
+            <li><strong>Conexidad:</strong> Si existe camino entre todo par de vértices</li>
+          </ul>
+        </div>
+
+        <h3>Representaciones</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Matriz de Adyacencia</h4>
+            <p>Matriz n×n donde aij = 1 si existe arista (i,j)</p>
+            <p><strong>Ventaja:</strong> Acceso O(1)</p>
+            <p><strong>Desventaja:</strong> Espacio O(n²)</p>
+          </div>
+          <div class="card">
+            <h4>Lista de Adyacencia</h4>
+            <p>Lista de listas para cada vértice</p>
+            <p><strong>Ventaja:</strong> Espacio O(V+E)</p>
+            <p><strong>Desventaja:</strong> Acceso O(grado(v))</p>
+          </div>
+        </div>
+
+        <h3>Algoritmos en Grafos</h3>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h4>Búsqueda</h4>
+            <ul>
+              <li><strong>BFS:</strong> Amplitud primero</li>
+              <li><strong>DFS:</strong> Profundidad primero</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Recorridos Especiales</h4>
+            <ul>
+              <li><strong>Dijkstra:</strong> Camino más corto</li>
+              <li><strong>Floyd-Warshall:</strong> Todos los caminos</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumen -->
+      <section class="topic">
+        <h2>Resumen de la Unidad 3</h2>
+        <div class="card">
+          <ul>
+            <li>La visualización es esencial para entender estructuras complejas</li>
+            <li>Árboles son estructuras jerárquicas sin ciclos</li>
+            <li>Los recorridos permiten acceder a todos los nodos</li>
+            <li>Grafos generalizan árboles permitiendo ciclos</li>
+            <li>Existen múltiples representaciones y algoritmos para grafos</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navegación entre unidades -->
+      <section class="topic">
+        <div class="grid grid-cols-2" style="gap: 2rem; margin-top: 2rem;">
+          <a href="./unidad2.html" class="card">
+            <h3>← Unidad Anterior</h3>
+            <p><strong>Unidad 2: Estructuras Lineales</strong></p>
+          </a>
+          <a href="./unidad4.html" class="card">
+            <h3>Unidad Siguiente →</h3>
+            <p><strong>Unidad 4: Búsqueda y Ordenamiento</strong></p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="../about.html">Sobre la Asignatura</a></li>
+          <li><a href="../../../index.html">Página Principal</a></li>
+          <li><a href="../contact.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./unidad1.html">Unidad 1</a></li>
+          <li><a href="./unidad2.html">Unidad 2</a></li>
+          <li><a href="./unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./unidad4.html">Unidad 4</a></li>
+          <li><a href="./unidad5.html">Unidad 5</a></li>
+          <li><a href="./unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,34 +1,337 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Estructura de Datos</title>
-<link rel="stylesheet" href="/docs/css/main.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estructura de Datos - Plataforma académica completa con 6 unidades distribuidas en 2 ciclos">
+  <meta name="keywords" content="estructura de datos, algoritmos, pilas, colas, árboles, grafos">
+  <title>Estructura de Datos - Inicio</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="header-container">
+      <a href="./index.html" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7L2 12L12 17L22 12L22 7L12 2Z"></path>
+          <path d="M2 12L12 17L22 12"></path>
+          <path d="M12 17L12 22"></path>
+        </svg>
+        <span class="logo-text">Estructura de Datos</span>
+      </a>
 
-<header>
-  <h1>📘 Estructura de Datos — ESPOCH</h1>
-  <div class="unidades">
-    <button class="active" onclick="mostrarUnidad('u1', this)">Unidad 1</button>
-    <button onclick="mostrarUnidad('u2', this)">Unidad 2</button>
-    <button onclick="mostrarUnidad('u3', this)">Unidad 3</button>
-    <button onclick="mostrarUnidad('u4', this)">Unidad 4</button>
-  </div>
-</header>
+      <nav>
+        <ul>
+          <li><a href="./index.html" class="active">Inicio</a></li>
+          <li><a href="./components/about.html">Sobre la Asignatura</a></li>
+          <li><a href="#ciclos">Ciclos</a></li>
+          <li><a href="./components/contact.html">Contacto</a></li>
+        </ul>
+      </nav>
 
-<aside>
-  <h2>Contenido</h2>
-  <ul id="menu" class="menu"></ul>
-</aside>
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
 
-<main id="contenido">
-  <div class="card">
-    <h2>Unidad 1 — Fundamentos e Introducción</h2>
-  </div>
+        <button class="menu-toggle" aria-label="Abrir menú" title="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
 
-</main>
-<script src="/docs/js/main.js"></script>
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Estructura de Datos</h1>
+      <p>Plataforma académica para el aprendizaje de estructuras de datos y algoritmos</p>
+    </section>
 
+    <!-- Section: Introducción -->
+    <section class="container">
+      <div class="section-header">
+        <h2>Bienvenido</h2>
+        <p>Material didáctico completo y organizado para dominar las estructuras de datos</p>
+      </div>
+
+      <div class="grid grid-cols-3">
+        <div class="card">
+          <div class="card-header">
+            <h3>Contenido Completo</h3>
+          </div>
+          <div class="card-body">
+            <p>Acceso a 6 unidades temáticas distribuidas en 2 ciclos académicos con explicaciones detalladas y ejemplos prácticos.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Objetivo</h3>
+          </div>
+          <div class="card-body">
+            <p>Desarrollar ejercicios prácticos para entender, implementar y optimizar estructuras de datos en lenguajes de programación.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Conceptos Prácticos</h3>
+          </div>
+          <div class="card-body">
+            <p>Combinación de teoría fundamentada con aplicaciones reales y casos de uso en programación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Ciclos y Unidades -->
+    <section class="container" id="ciclos">
+      <div class="section-header">
+        <h2>Ciclos Académicos</h2>
+        <p>Estructura organizada en dos ciclos con tres unidades cada uno</p>
+      </div>
+
+      <!-- CICLO I -->
+      <div class="cycle-container">
+        <div class="cycle-header">
+          <div class="cycle-number">I</div>
+          <div class="cycle-info">
+            <h2>Ciclo I: Fundamentos y Estructuras Lineales</h2>
+            <p>Introducción a conceptos fundamentales y estructuras de datos lineales básicas</p>
+          </div>
+        </div>
+
+        <div class="units-grid">
+          <!-- Unidad 1 -->
+          <a href="./components/units/unidad1.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 1</h3>
+              <span class="unit-card-number">1</span>
+              <p>Fundamentos e Introducción</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Conceptos básicos de estructuras de datos, tipos de datos y fundamentos de algoritmia</p>
+              <ul class="unit-topics">
+                <li>Historia y características</li>
+                <li>Tipos de datos</li>
+                <li>Vectores y matrices</li>
+                <li>Fundamentos de algoritmia</li>
+              </ul>
+            </div>
+          </a>
+
+          <!-- Unidad 2 -->
+          <a href="./components/units/unidad2.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 2</h3>
+              <span class="unit-card-number">2</span>
+              <p>Estructuras Lineales</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Pilas, colas y listas: las estructuras de datos lineales más importantes</p>
+              <ul class="unit-topics">
+                <li>Pilas (Stack)</li>
+                <li>Colas (Queue)</li>
+                <li>Listas enlazadas</li>
+                <li>Operaciones y aplicaciones</li>
+              </ul>
+            </div>
+          </a>
+
+          <!-- Unidad 3 -->
+          <a href="./components/units/unidad3.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 3</h3>
+              <span class="unit-card-number">3</span>
+              <p>Estructuras No Lineales</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Árboles y grafos: estructuras de datos avanzadas y sus aplicaciones</p>
+              <ul class="unit-topics">
+                <li>Visualización de algoritmos</li>
+                <li>Árboles y recorridos</li>
+                <li>Grafos y propiedades</li>
+                <li>Métodos de análisis</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CICLO II -->
+      <div class="cycle-container">
+        <div class="cycle-header">
+          <div class="cycle-number">II</div>
+          <div class="cycle-info">
+            <h2>Ciclo II: Búsqueda, Ordenamiento y Temas Avanzados</h2>
+            <p>Algoritmos de búsqueda, ordenamiento y conceptos avanzados en estructuras de datos</p>
+          </div>
+        </div>
+
+        <div class="units-grid">
+          <!-- Unidad 4 -->
+          <a href="./components/units/unidad4.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 4</h3>
+              <span class="unit-card-number">4</span>
+              <p>Búsqueda y Ordenamiento</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Análisis de algoritmos, técnicas de búsqueda y ordenamiento con complejidad</p>
+              <ul class="unit-topics">
+                <li>Análisis de complejidad</li>
+                <li>Algoritmos de ordenamiento</li>
+                <li>Algoritmos de búsqueda</li>
+                <li>Big O y optimización</li>
+              </ul>
+            </div>
+          </a>
+
+          <!-- Unidad 5 -->
+          <a href="./components/units/unidad5.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 5</h3>
+              <span class="unit-card-number">5</span>
+              <p>Aplicaciones Avanzadas I</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Extensión de conceptos y aplicaciones prácticas en programación competitiva</p>
+              <ul class="unit-topics">
+                <li>Estrategias de optimización</li>
+                <li>Casos de uso reales</li>
+                <li>Algoritmos especializados</li>
+                <li>Ejemplos prácticos</li>
+              </ul>
+            </div>
+          </a>
+
+          <!-- Unidad 6 -->
+          <a href="./components/units/unidad6.html" class="unit-card">
+            <div class="unit-card-header">
+              <h3>Unidad 6</h3>
+              <span class="unit-card-number">6</span>
+              <p>Aplicaciones Avanzadas II</p>
+            </div>
+            <div class="unit-card-body">
+              <p>Temas avanzados, integraciones y proyectos integradores</p>
+              <ul class="unit-topics">
+                <li>Algoritmos complejos</li>
+                <li>Estructuras híbridas</li>
+                <li>Proyectos integradores</li>
+                <li>Recursos adicionales</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <h2>¿Listo para comenzar?</h2>
+      <p>Selecciona una unidad y comienza tu aprendizaje en estructuras de datos</p>
+      <a href="./components/units/unidad1.html" class="btn btn-primary btn-lg">Iniciar con Unidad 1</a>
+    </section>
+
+    <!-- Section: Características -->
+    <section class="container">
+      <div class="section-header">
+        <h2>Características del Sitio</h2>
+        <p>Herramientas diseñadas para optimizar tu aprendizaje</p>
+      </div>
+
+      <div class="grid grid-cols-2">
+        <div class="card">
+          <h3>Modo Claro/Oscuro</h3>
+          <p>Interfaz adaptable a tus preferencias de visualización para reducir fatiga visual durante largas sesiones de estudio.</p>
+        </div>
+
+        <div class="card">
+          <h3>Diseño Responsivo</h3>
+          <p>Acceso desde cualquier dispositivo: computadora, tablet o smartphone con la mejor experiencia visual.</p>
+        </div>
+
+        <div class="card">
+          <h3>Navegación Intuitiva</h3>
+          <p>Menú jerárquico y bien organizado para encontrar fácilmente cualquier tema o concepto.</p>
+        </div>
+
+        <div class="card">
+          <h3>Accesibilidad</h3>
+          <p>Sitio completamente accesible con soporte para tecnologías de asistencia y navegación por teclado.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Sobre el Sitio</h3>
+        <ul>
+          <li><a href="./components/about.html">Sobre la Asignatura</a></li>
+          <li><a href="./index.html">Página Principal</a></li>
+          <li><a href="./components/contact.html">Contacto</a></li>
+          <li><a href="#ciclos">Ciclos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo I</h3>
+        <ul>
+          <li><a href="./components/units/unidad1.html">Unidad 1</a></li>
+          <li><a href="./components/units/unidad2.html">Unidad 2</a></li>
+          <li><a href="./components/units/unidad3.html">Unidad 3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ciclo II</h3>
+        <ul>
+          <li><a href="./components/units/unidad4.html">Unidad 4</a></li>
+          <li><a href="./components/units/unidad5.html">Unidad 5</a></li>
+          <li><a href="./components/units/unidad6.html">Unidad 6</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="https://github.com/wsxdev/material-estructura-datos" target="_blank" rel="noopener noreferrer">GitHub Proyecto</a></li>
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Stack Overflow</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Estructura de Datos. Desarrollado por <strong>Licet Ibarra</strong>, <strong>William Chisag</strong> y <strong>Britany Redrován</strong>.</p>
+      <p>Todos los derechos reservados. Material educativo para la asignatura de Estructura de Datos.</p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
 </body>
 </html>
