@@ -96,4 +96,16 @@
 -   Búsqueda binaria\
 -   Búsqueda hash
 
+### REPOSITORIOS
+- [Carrito Compras (records de estructuras de datos)](https://github.com/licetdev/ed-record-carrito-compra.git)
+- [Sistema de Gestión de Biblioteca (records, ArrayList)](https://github.com/wsxdev/sistema-biblioteca.git)
+- [Ejercicio métodos manuales (Pila)](https://github.com/licetdev/ejercicio-metodos-manuales-pila.git)
+- [Ejercicio métodos manuales (Cola)](https://github.com/licetdev/Colas.git)
+- [Ejercicio aplicación (Pila - Navegador web)](https://github.com/licetdev/navegador-web.git)
+- [Ejercicio aplicación (Cola doble)](https://github.com/xaviertoala/AplicacionDoble-Queue.git)
+- [Ejercicio aplicación (Cola prioridad - AnderT87)](https://github.com/AnderT87/Queue_prioridad.git)
+- [Ejercicio aplicación (Cola doble - Registro de temperaturas)](https://github.com/WilliAn-333/SistemaDeResgistroDeTemperaturas.git)
+- [Ejercicio aplicación (Cola circular - Sistema de Turnos)](https://github.com/anthonypulupa/-SistemadeTurnos)
+- [Ejercicio aplicación (Cola circular - Cliente)](https://github.com/licetdev/sistema-cliente-cola-circular)
+- [Ejercicio aplicación (Cola prioridad - Nicole1611)](https://github.com/Nicole1611/ColaPrioridad.git)
 ------------------------------------------------------------------------
